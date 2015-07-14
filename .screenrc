@@ -1,0 +1,17 @@
+# this is the global screenrc file. Handle with care.
+
+termcapinfo xterm* G0:is=\E[?4l\E>:ti@:te@
+termcapinfo linux me=\E[m:AX
+escape ^L^L
+
+term xterm
+
+
+
+# caption always "[%H] %w %m-%d %c:%s"
+caption always "%{mk}[%H] %{gk}%m-%d %c:%s %{wk}%?%-Lw%?%{rw}%n*%f %t%?(%u)%?%{wk}%?%+Lw%?"
+# caption always "%?%F%{-b 4w}%:%{-b bb}%? %H | %l | %m-%d %c:%s |%?%F%{-b 4w}%?%L=%-Lw%45>%{-b w4}%n%f* %t%{-}%+Lw%-0<"
+# bind 0 remove
+# bind 1 only
+# bind 2 split
+# bind o focus

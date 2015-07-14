@@ -1,0 +1,1011 @@
+<VERSION>StrokeIt .9.4</VERSION>
+
+<APP name="[½ûÓÃÊÖÊÆµÄ³ÌĞò]">
+class=BaseBar
+exec=BF1942.exe
+exec=ce.exe
+class=Diablo II
+exec=F1_2002.exe
+exec=gta3.exe
+exec=hl.exe
+exec=jk2mp.exe
+exec=jk2sp.exe
+exec=mohaa.exe
+exec=nwmain.exe
+exec=quake3.exe
+exec=SeriousSam.exe
+exec=simcity 4.exe
+exec=starcraft.exe
+exec=unreal2.exe
+exec=UnrealTournament.exe
+exec=ut2003.exe
+exec=war3.exe
+exec=swgclient.exe
+exec=Ra2.exe
+exec=Game.exe
+exec=Frozen Throne.exe
+class=Warcraft III
+exec=cstrike.exe
+caption=Counter-Strike
+class=LeagueOfLegendsWindowClass
+exec=mstsc.exe
+exec=vmware.exe
+class=VMUIFrame
+exclude=true
+</APP>
+
+<APP name="Default">
+±êÇ©:¹Ø±Õ[¡ı] {
+   gesture = Down
+   NEXT = keys, hotkey "[CTRL_DOWN]w[CTRL_UP]"
+}
+±êÇ©:Ïòºó[¡ü¡ú] {
+   gesture = Up-Right
+   PRIOR = keys, hotkey "[CTRL_DOWN][TAB][CTRL_UP]"
+}
+±êÇ©:ÏòÇ°[¡ü¡û] {
+   gesture = Up-Left
+   PRIOR = keys, hotkey "[CTRL_DOWN][SHIFT_DOWN][TAB][SHIFT_UP][CTRL_UP]"
+}
+´°¿Ú  ¡ıÒ³ {
+   gesture = Right-Down
+   END = keys, hotkey "[NEXT]"
+}
+´°¿Ú ¡üÒ³ {
+   gesture = Right-Up
+   END = keys, hotkey "[PRIOR]"
+}
+´°¿Ú:¹Ø±Õ[¡ı¡ú] {
+   gesture = Down-Right
+   ALT + F4 = keys, hotkey "[ALT_DOWN][F4][ALT_UP]"
+}
+´°¿Ú:¹ö¶¯µ½µ×²¿[¡û¡ı] {
+   gesture = Left-Down
+   END = keys, hotkey "[CTRL_DOWN][END][CTRL_UP]"
+}
+´°¿Ú:¹ö¶¯µ½¶¥²¿[¡û¡ü] {
+   gesture = Left-Up
+   HOME = keys, hotkey "[CTRL_DOWN][HOME][CTRL_UP]"
+}
+´°¿Ú:ÈÎÎñ[¨I] {
+   gesture = \ Up
+   ×îĞ¡»¯ = keys, hotkey "[WIN_DOWN]c[WIN_UP]"
+}
+´°¿Ú:ÍĞÅÌ [¨K] {
+   gesture = \ Down
+   ×îĞ¡»¯ = keys, hotkey "[WIN_DOWN]v[WIN_UP]"
+}
+´°¿Ú:ÏòÉÏ[¡ü] {
+   gesture = Up
+   PRIOR = keys, hotkey "[ALT_DOWN][UP][ALT_UP]"
+}
+´°¿Ú:ÏòÓÒ[[¡ú] {
+   gesture = Right
+   PRIOR = keys, hotkey "[ALT_DOWN][RIGHT][ALT_UP]"
+}
+´°¿Ú:Ïò×ó[¡û] {
+   gesture = Left
+   PRIOR = keys, hotkey "[ALT_DOWN][LEFT][ALT_UP]"
+}
+´°¿Ú:×î´ó»¯/»¹Ô­ [¨J] {
+   gesture = / Up
+   ×î´ó»¯/»¹Ô­ = win, max_rest
+}
+´°¿Ú:×îĞ¡»¯ [¨L] {
+   gesture = / Down
+   ×îĞ¡»¯ = win, min
+}
+È«²¿»¹Ô­ [¨J¨L] {
+   gesture = / Up - / Down
+   Shift+Win+M = keys, hotkey "[WIN_DOWN][SHIFT_DOWN]M[SHIFT_UP][WIN_UP]"
+}
+Ë¢ĞÂ [¡û¡ú] {
+   gesture = Left-Right
+   F5 = keys, hotkey "[F5]"
+}
+ÏÔÊ¾×ÀÃæ [¨L¨J] {
+   gesture = / Down - / Up
+   Win+M = keys, keys "[win_down]d[win_up]"
+}
+ĞÂ½¨¶¯×÷ {
+   gesture = Right-Left-Right
+   ĞÂ½¨ÃüÁî = sicontrol, show
+}
+Ñ¡Ôñ×ÀÃæ [¡ı¡ı] {
+   gesture = WHEEL_DOWN
+   Win+M = keys, keys "[alt_down][ctrl_down][tab_down][tab_up][ctrl_up][alt_up]"
+}
+</APP>
+
+<APP name="dev">
+exec=MSDEV.EXE
+¡ü {
+   gesture = Up
+   ĞÂ½¨ÃüÁî = keys, hotkey "[ALT_DOWN]g[ALT_UP]"
+}
+´°¿Ú:ÏòÓÒ[[¡ú] {
+   gesture = Right
+   PRIOR = keys, hotkey "[ALT_DOWN][RIGHT][ALT_UP]"
+}
+´°¿Ú:Ïò×ó[¡û] {
+   gesture = Left
+   PRIOR = keys, hotkey "[ALT_DOWN][LEFT][ALT_UP]"
+}
+</APP>
+
+<APP name="firefox">
+class=MozillaWindowClass
+exec=sublime_text.exe
+exec=chrome.exe
+±êÇ©:³·Ïú[¡ü] {
+   gesture = Up
+   PRIOR = keys, hotkey "[CTRL_DOWN][SHIFT_DOWN]t[SHIFT_UP][CTRL_UP]"
+}
+</APP>
+
+<APP name="si">
+exec=Insight3.exe
+±êÇ©:¶¨Òå[¡ü] {
+   gesture = Up
+   PRIOR = keys, hotkey "[CTRL_DOWN]=[CTRL_UP]"
+}
+±êÇ©:¹Ø±Õ[¡ı] {
+   gesture = Down
+   PRIOR = keys, hotkey "[CTRL_DOWN][F4][CTRL_UP]"
+}
+´°¿Ú:ÏòÓÒ[[¡ú] {
+   gesture = Right
+   PRIOR = keys, hotkey "[ALT_DOWN].[ALT_UP]"
+}
+´°¿Ú:Ïò×ó[¡û] {
+   gesture = Left
+   PRIOR = keys, hotkey "[ALT_DOWN],[ALT_UP]"
+}
+·ûºÅ [¡û¡ú] {
+   gesture = Left-Right
+   F5 = keys, hotkey "[F7]"
+}
+¸ßÁÁ [¡ü¡ı] {
+   gesture = Up-Down
+   F5 = keys, hotkey "[SHIFT_DOWN][F8][SHIFT_UP]"
+}
+ÊéÇ©[¡ı¡û] {
+   gesture = Down-Left
+   PRIOR = keys, hotkey "[CTRL_DOWN]m[CTRL_UP]"
+}
+ËÑË÷ [¡ı¡ü] {
+   gesture = Down-Up
+   F5 = keys, hotkey  "[CTRL_DOWN][ALT_DOWN]f[ALT_UP][CTRL_UP]"
+}
+ÒıÓÃ [¡ú¡û] {
+   gesture = Right-Left
+   F5 = keys, hotkey "[CTRL_DOWN]/[CTRL_UP]"
+}
+</APP>
+
+<APP name="sublime">
+exec=sublime_text.exe
+exec=devenv.exe
+exec=MSDEV.EXE
+exec=DevCPP.exe
+±êÇ©:¹Ø±Õ[¡ı] {
+   gesture = Down
+   PRIOR = keys, hotkey "[CTRL_DOWN][F4][CTRL_UP]"
+}
+</APP>
+
+<APP name="vs">
+exec=devenv.exe
+¡ü {
+   gesture = Up
+   ĞÂ½¨ÃüÁî = keys, hotkey "[ALT_DOWN]g[ALT_UP]"
+}
+´°¿Ú:ÏòÓÒ[[¡ú] {
+   gesture = Right
+   PRIOR = keys, hotkey "[CTRL_DOWN][SHIFT_DOWN]-[SHIFT_UP][CTRL_UP]"
+}
+´°¿Ú:Ïò×ó[¡û] {
+   gesture = Left
+   PRIOR = keys, hotkey "[CTRL_DOWN]-[CTRL_UP]"
+}
+</APP>
+
+<GESTURE>
+Right {
+E`
+}
+
+Right-Up {
+xc
+}
+
+Right-Down {
+i
+}
+
+Right-Left {
+Ee@
+hp
+}
+
+Right-Left-Right {
+EeE`
+}
+
+Left {
+e@
+}
+
+Left-Up {
+˜A
+}
+
+Left-Down {
+2G
+}
+
+Left-Right {
+eE`
+}
+
+Left-Right-Left {
+eEe@
+}
+
+Up {
+… 
+}
+
+Up-Right {
+t#
+}
+
+Up-Left {
+–!
+}
+
+Up-Down {
+…%€
+}
+
+Up-Down-Up {
+…%… 
+}
+
+Down {
+%€
+}
+
+Down-Left {
+6‡
+}
+
+Down-Right {
+‰
+†
+u0
+}
+
+Down-Up {
+%… 
+}
+
+Down-Up-Down {
+%…%€
+}
+
+/ Up {
+u0
+}
+
+/ Up - / Down {
+u5p
+}
+
+/ Down {
+5p
+}
+
+/ Down - / Up {
+5u0
+}
+
+\ Down {
+
+}
+
+\ Down - \ Up {
+•
+}
+
+\ Up {
+•
+}
+
+\ Up - \ Down {
+•
+}
+
+1 {
+alias=Down
+}
+
+2 {
+alias=Z
+}
+
+3 {
+special=||E
+e˜
+}
+
+3 Reversed {
+special=-||E
+}
+
+4 {
+eBi
+ei
+…‰
+…$V
+…`
+…$‰
+…0
+…5x`
+–$‰
+•$‰
+…2E
+}
+
+5 {
+alias=S
+}
+
+6 {
+alias=G
+}
+
+7 {
+alias=Y
+}
+
+8 {
+2H˜B0
+$‰„ 
+2HB0
+$‰‡S
+2E˜B0
+$Y„ 
+2E˜E0
+$Y„#
+2H˜B
+$‰„#
+!Y„#
+2˜B0
+!Y„S
+&„S
+!Y„ 
+5˜B0
+2HE0
+2H˜E0
+2H˜E0
+2u0
+$Y„S 
+2E˜E2
+$„S 
+2H˜E2
+2E˜E2
+2˜E2
+!Y„#!
+$Y‡S!
+$Y„#!
+$Y„S!
+!Y„S 
+!Y„S!
+$‰‡S!
+!Y‡S!
+!WS!
+˜u2
+˜E2
+$„S!
+$‡S!
+$‰„S!
+˜E2
+˜B
+˜B
+$‰‡S 
+˜B2
+2E˜u2
+!Y„# 
+!Y‡Q
+$Y‡S 
+u2
+!&‡S 
+!Y‡S 
+2˜E0
+$Y„!
+!Y‡R
+†!
+2˜u2
+%˜E2
+%˜E2
+&‡S 
+5˜E2
+$‰„S 
+u2
+‡S!
+‰‡S!
+5˜u2
+&‡† 
+2˜E2
+2hB2
+5˜B2
+%u2
+%˜B2
+&„S 
+6„# 
+$u2
+„S 
+5˜E0
+!WS 
+!&„ 
+}
+
+9 {
+$Si
+2Bi
+!&
+2GSi
+2E6
+$&
+2i
+26
+$†6
+$u6
+}
+
+0 {
+alias=O
+}
+
+A {
+t&
+u6
+t%
+t&
+}
+
+B {
+B2‡
+B2˜p
+B2E˜p
+B5Hp
+B5˜p
+BRhp
+Be˜p
+Bhp
+Q#Y€
+q#$‡
+t!&T
+t!&‡
+t!Y€
+t!Y‡
+t#!&T
+t#!V‡
+t#!W
+t#!Y€
+t#!Y‡
+t#$V‡
+t#$Y€
+t#$Y‡
+t#$‡
+t#&W
+t#&‡
+t#TV‡
+t#TY€
+t#TY‡
+t#T‡
+t#V€
+t#V‡
+t#W
+t#Y€
+t#Y‡
+t$V‡
+t$Y€
+t$Y‡
+t$€
+t$‰‡
+t%˜
+t%˜p
+t&)‡
+t&TY€
+t&TY‡
+t&T‡
+t&Y€
+t&Y‡
+u5˜p
+„#!V€
+„#!V‡
+„#!Y€
+„#!Y‡
+„#$Y
+„#$Y€
+„#$Y‡
+„#$€
+„#&‡
+„#TY€
+„#Y€
+„#Y‡
+„$Y€
+„$Y‡
+„&TY€
+„&TY‡
+„&Y€
+t&%˜p
+t&&‡
+t#Q&‡
+t#T‰‡
+t&T‰‡
+„&T‰‡
+t&W‡
+t&$‰‡
+t#$‰€
+}
+
+C {
+2H
+$‰
+2H
+5x
+}
+
+D {
+t&‡
+t&€
+t&W
+„&‡
+}
+
+E {
+2Eex
+25x
+2ex
+25x
+2ex
+2Ex
+!W‰
+$W‰
+2x
+!$‰
+5ex
+25x
+2x
+2H
+2Eex
+2ex
+5ex
+2Ehx
+$VW‰
+22H
+22H
+2E5x
+5ux
+bEx
+bex
+bx
+2GW†
+bHH
+bEx
+bEex
+2HW†
+bH•x
+bH
+5Ex
+2hx
+bH
+bx
+5Eex
+2Hx
+25x
+bex
+2GW‰
+$‰‡
+bbH
+55x
+}
+
+F {
+alias=Left-Down
+}
+
+G {
+2He
+$†P
+2H˜
+$‰€
+2H•
+2H˜p
+2He@
+$†T
+$†W
+2Hep
+2H•@
+2H•p
+}
+
+H {
+u
+†
+$u
+t&
+u6
+t
+}
+
+I {
+alias=Down
+}
+
+J {
+GS
+Hc
+}
+
+K {
+6„
+5t
+5t%
+5„%
+5u
+5t€
+5
+5E
+5H
+5i
+5t%€
+6„Y
+6„‰
+5t‰
+6„%
+5t&
+5u€
+$t
+6t
+2AY
+%t
+5t‰
+}
+
+L {
+alias=Down-Right
+}
+
+M {
+special=-1E
+}
+
+N {
+t†0
+t–0
+t%–0
+t†0
+t
+AHc
+t…0
+t†0
+BYc
+t–
+u–0
+}
+
+O {
+$†0
+$† 
+2Hb
+$†!
+}
+
+P {
+t#T
+t&T
+„&T
+t#!
+„&!
+t#Q
+„#P
+t&!
+t&P
+„#Q
+t&Q
+„&P
+t# 
+t#P
+t#$
+}
+
+Q {
+x–2€
+†!P
+†!X
+†!€
+†$‰
+†%
+$S$€
+$†!P
+$†!X
+$†!Y
+$†!€
+$†!‰
+$†!
+$†$
+$†$p
+$†$€
+$†$‰
+$†$
+$†%
+$†%€
+$†%
+$†&
+$†)
+2Hb
+2Hb
+2Hb€
+2Hb
+2Hb
+2Hb
+2HbH
+2HbH
+2HbP
+2HbX
+2HbY
+2Hb`
+2Hb‰
+2Hb
+†%
+2Hb@
+†$€
+†!Y
+$†&
+2E2i
+$v!Y
+$†$Y
+2GS!Y
+bHbH
+bHbY
+2Hbi
+}
+
+R {
+t#T‰
+t#TY
+t$‰
+t&T‰
+t&Y
+t#T€
+BeH
+t#Y
+„&T‰
+t$Y
+t&W€
+t#!Y
+t#$‰
+„&TY
+t&(
+„&T€
+t#$Y
+„#Y
+t#$€
+t&T€
+„&€
+„&Y
+t&‰
+„#T‰
+„$‰
+BeE
+„#TY
+t&$€
+B5
+„&‰
+t#$P
+t&QH
+t&W‰
+„#W‰
+Bex
+„&W‰
+t#W‰
+t&$‰
+t&QY
+t&•H
+tx
+t&TY
+„#$‰
+}
+
+S {
+special=|3N
+!Y‡
+2Hp
+2Ehp
+}
+
+T {
+alias=Right-Down
+}
+
+U {
+†0
+…0
+–0
+}
+
+V {
+alias=U
+}
+
+W {
+special=1E
+}
+
+X {
+special=-1K
+}
+
+Y {
+6€
+&
+&€
+5p
+6
+5p
+6
+6‡
+5€
+#W
+%6‡
+}
+
+Z {
+special=3N
+hx
+}
+
+? {
+5€
+B5p
+Bh
+Bep
+B5€
+Q&€
+Q&W
+Q#W
+Q&‡
+Q&
+Bi
+Q#X
+h
+ex
+ep
+!&W
+2h
+!&€
+}
+
+A Reversed {
+special=||A
+}
+
+C Reversed {
+special=-C
+}
+
+D Reversed {
+special=!D
+}
+
+E Reversed {
+special=-E
+}
+
+F Reversed {
+alias=Up-Right
+}
+
+G Reversed {
+special=!G
+}
+
+H Reversed {
+special=!H
+}
+
+I Reversed {
+alias=Up
+}
+
+J Reversed {
+special=!J
+}
+
+K Reversed {
+special=-K
+}
+
+L Reversed {
+alias=Left-Up
+}
+
+M Reversed {
+special=3E
+–%
+}
+
+N Reversed {
+special=-||N
+}
+
+O Reversed {
+special=||O
+}
+
+P Reversed {
+special=!P
+}
+
+S Reversed {
+special=|1N
+†!
+}
+
+T Reversed {
+alias=Up-Left
+}
+
+U Reversed {
+special=||U
+}
+
+V Reversed {
+alias=U Reversed
+}
+
+W Reversed {
+special=-3E
+}
+
+X Reversed {
+special=3K
+}
+
+Y Reversed {
+special=!Y
+}
+
+Z Reversed {
+special=1N
+}
+
+WHEEL_UP {
+}
+
+WHEEL_DOWN {
+}
+
+LBUTTON_DOWN {
+}
+
+LBUTTON_UP {
+}
+
+MBUTTON_DOWN {
+}
+
+MBUTTON_UP {
+}
+
+RBUTTON_DOWN {
+}
+
+RBUTTON_UP {
+}
+
+</GESTURE>
