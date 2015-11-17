@@ -1,10 +1,20 @@
 #!/usr/bin/bash
 
-SYS=`uname|awk -F_ '{print $1}'`
-if [[ "CYGWIN" == "$SYS" ]]; then
+SYS=`uname -o`
+if [[ "Cygwin" == "$SYS" ]]; then
     alias we="cd /cygdrive/e/workspace"
     alias wiki="cd /cygdrive/e/workspace/git/wiki"
     export CYGWIN=nodosfilewarning
+elif [[ "Msys" == "$SYS" ]]; then
+    alias we="cd /e/workspace"
+    alias wiki="cd /e/workspace/git/wiki"
+    export MSYS="winsymlinks:lnk"
+    #   if [[ `uname -s` == "MSYS_NT-6.3" ]]; then
+    #       export PATH=/bin:$PATH
+    #   fi
+    if [[ -f /usr/share/git/completion/git-prompt.sh ]]; then
+        . /usr/share/git/completion/git-prompt.sh
+    fi
 elif [[ "Linux" == "$SYS" ]];then
     alias we="cd /home/workspace"
 fi
@@ -41,14 +51,15 @@ export HISTSIZE=5000
 export HISTIGNORE="&:[ ]*:exit"
 shopt -s histappend
 shopt -s cmdhist
+shopt -s nocaseglob # 补全不区分大小写
 
 export GOROOT="/cygdrive/d/tools/go"
 export BOOST_DLL="/cygdrive/e/workspace/boost_1_55_0/stage/lib"
-export PATH=$PATH:$GOROOT/bin:$BOOST_DLL
+#   export PATH=$PATH:$GOROOT/bin:$BOOST_DLL
 
 # open file faster
 # eliminate long Window$ pathnames from the PATH
-export PATH='/bin:/usr/bin:/usr/local/bin':$PATH
+#   export PATH='/usr/bin:/usr/local/bin':$PATH
 # check the hash before searching the PATH directories
 shopt -s checkhash
 # do not search the path when .-sourcing a file
@@ -71,7 +82,8 @@ if ! shopt -oq posix; then
     fi
 fi
 # source /etc/bash_completion.d/git
-PS1='\[\e]0;\w\a\]\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\[\033[01;35m\]$(__git_ps1 "(%s)")\[\033[00m\] \$ '
+SYS_NAME=`uname -s|sed 's#_.*##g;s#[A-Z]#\l&#g'`
+PS1='\[\e]0;\w\a\]\[\033[01;32m\]\u@\h\[\033[01;31m\][$SYS_NAME]\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\[\033[01;35m\]$(__git_ps1 "(%s)")\[\033[00m\] \$ '
 
 ## goagent proxy
 #   export http_proxy="http://localhost:8087"
