@@ -9,7 +9,7 @@
     ci = commit -s
     ds = diff --staged
     dt = difftool
-    dc = difftool --cached		
+    dc = difftool --cached
     rc = rm --cached
     mt = mergetool
     last = log -1 HEAD
@@ -23,6 +23,7 @@
 [core]
 	quotepath = false
 	filemode = false
+    autocrlf = false
 [diff]
 	tool = vimdiff
 [difftool]
