@@ -686,22 +686,14 @@ endfunction
 "   " Bundle "molokai"
 "   " Bundle "phd"
 "   Bundle 'emacscommandline'
-<<<<<<< HEAD
 "   "   Bundle "vividchalk.vim"
-=======
-"   Bundle "vividchalk.vim"
->>>>>>> eee95ea8a0f2962989250e192b42b80dc12f9cf5
 "   " colorscheme solarized
 "   " colorscheme molokai
 "   " colorscheme phd
 "
 "   " colorscheme github
 "   " colorscheme guardian
-<<<<<<< HEAD
-"   "   colorscheme vividchalk
-=======
 "   colorscheme vividchalk
->>>>>>> eee95ea8a0f2962989250e192b42b80dc12f9cf5
 "   set background=light
 "   set background=dark
 "

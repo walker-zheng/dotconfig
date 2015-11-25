@@ -7,8 +7,8 @@ if [[ "Cygwin" == "$SYS" ]]; then
     alias pc="cd /cygdrive/d/PCAPP"
     export CYGWIN=nodosfilewarning
 elif [[ "Msys" == "$SYS" ]]; then
-    alias we="cd /e/workspace"
-    alias wiki="cd /e/workspace/git/wiki"
+    alias we="cd /f/zmy"
+    alias wiki="cd /f/zmy/wiki"
     export MSYS="winsymlinks:lnk"
     #   if [[ `uname -s` == "MSYS_NT-6.3" ]]; then
     #       export PATH=/bin:$PATH
