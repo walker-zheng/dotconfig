@@ -591,14 +591,21 @@ vnoremap <leader>k :call Sdcv()<CR>
 autocmd BufWritePre * :%s/\s\+$//e
 autocmd BufWritePre *.cpp,*.py,*.c,*.h,*.hpp call Indent()
 
-set cursorcolumn
-set cursorline
-
-set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
-set termencoding=utf-8
+let &termencoding = &encoding
 set encoding=utf-8
+set fileencodings=utf-8
+set fileencodings=ucs-bom,utf-8,cp936
 
+"   set cursorcolumn
+set cursorline
+" colorscheme darkblue
+let g:airline_theme="badwolf"
+let g:spf13_bundle_groups=['youcompleteme',]
 
+"   vimdiff 忽略空白
+set diffopt+=iwhite
+
+set mouse=c
 set cino=t0
 set vb t_vb=
 
@@ -608,14 +615,8 @@ set shiftwidth=4
 set softtabstop=4
 set tabstop=4
 set smarttab
-
-
-set lbr
-set tw=500
-
-set ai "Auto indent
-set si "Smart indet
-set wrap "Wrap lines
+set nu
+set bg=dark
 
 let Tlist_Ctags_Cmd = '/usr/bin/ctags'
 let Tlist_Auto_Open = 1
@@ -657,106 +658,106 @@ function! Indent()
     call Preserve('normal gg=G')
 endfunction
 
-"Vundle Settings {
+"   "Vundle Settings {
+"   "
+"   " git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+"   set rtp+=~/.vim/bundle/vundle/
+"   call vundle#rc()
 "
-" git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-Bundle 'vundle'
-Bundle 'Emmet.vim'
-Bundle 'Auto-Pairs'
-Bundle 'matchit.zip'
-Bundle 'trailing-whitespace'
-Bundle 'cakebaker/scss-syntax.vim'
-Bundle "pangloss/vim-javascript"
-Bundle "othree/html5.vim"
-Bundle "beiyuu/vim-bundle-mako"
-Bundle "ayang/AutoComplPop"
-
-Bundle 'junegunn/vim-easy-align'
-vmap <Enter> <Plug>(EasyAlign)
-nmap <Leader>a <Plug>(EasyAlign)
-
-
-" Bundle "github-theme"
-" Bundle "Guardian"
-" Bundle "Solarized"
-" Bundle "molokai"
-" Bundle "phd"
-Bundle 'emacscommandline'
-Bundle "vividchalk.vim"
-" colorscheme solarized
-" colorscheme molokai
-" colorscheme phd
-
-" colorscheme github
-" colorscheme guardian
-colorscheme vividchalk
-set background=light
-set background=dark
-
-"" set statusline
-set statusline  =%6*%y\[%n\]
-set statusline +=%1*%f
-set statusline +=%2*%{HasPaste()}%m%r%w
-set statusline +=%3*[%{&ff}\]\[%{''.(&fenc!=''?&fenc:&enc).''}\]
-set statusline +=%4*\ CWD\[%r%{getcwd()}\]
-set statusline +=%5*%=[%p%%\ %l/%L:%c\]
-hi User1 term=bold ctermfg=Green        ctermbg=Black
-hi User2 term=bold ctermfg=Gray         ctermbg=Black
-hi User3 term=bold ctermfg=Red          ctermbg=Black
-hi User4 term=bold ctermfg=Magenta      ctermbg=Black
-hi User5 term=bold ctermfg=White        ctermbg=Black
-hi User6 term=bold ctermfg=Yellow       ctermbg=Black
-
-"" set cursor line&column color
-hi CursorLine    ctermfg=none ctermbg=black
-hi CursorColumn  ctermfg=none ctermbg=black
-" autocmd InsertEnter * highlight CursorColumn  ctermfg=none    ctermbg=white
-" autocmd InsertLeave * highlight CursorColumn  ctermfg=none    ctermbg=black
-
-function! HasPaste()
-    if &paste
-        return '[PASTE]'
-    else
-        return ''
-    endif
-endfunction
-
-Bundle "ervandew/supertab"
-let g:SuperTabDefaultCompletionType = "<c-n>"
-
-Bundle 'ctrlp.vim'
-let g:ctrlp_cmd = 'CtrlPMRU'
-
-Bundle 'EasyMotion'
-let g:EasyMotion_leader_key = '<Leader><Leader>'
-
-Bundle 'The-NERD-tree'
-Bundle 'The-NERD-Commenter'
-"设置相对行号
-nmap <leader>nt :NERDTree<cr>:set rnu<cr>
-let NERDTreeShowBookmarks=1
-let NERDTreeShowFiles=1
-let NERDTreeShowHidden=1
-let NERDTreeIgnore=['\.$','\~$']
-let NERDTreeShowLineNumbers=1
-let NERDTreeWinPos=1
-
-Bundle 'UltiSnips'
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-
-"Bundle 'FencView.vim'
-"let g:fencview_autodetect=1
-"Bundle 'Valloric/YouCompleteMe'
-"Bundle 'terryma/vim-multiple-cursors'
-"Bundle '_jsbeautify'
-"nnoremap <leader>_ff :call g:Jsbeautify()<CR>
-"Bundle 'nathanaelkane/vim-indent-guides'
-"let g:indent_guides_enable_on_vim_startup=1
-"let g:indent_guides_guide_size=1
-
-"}
+"   Bundle 'vundle'
+"   Bundle 'Emmet.vim'
+"   Bundle 'Auto-Pairs'
+"   Bundle 'matchit.zip'
+"   Bundle 'trailing-whitespace'
+"   Bundle 'cakebaker/scss-syntax.vim'
+"   Bundle "pangloss/vim-javascript"
+"   Bundle "othree/html5.vim"
+"   Bundle "beiyuu/vim-bundle-mako"
+"   Bundle "ayang/AutoComplPop"
+"
+"   Bundle 'junegunn/vim-easy-align'
+"   vmap <Enter> <Plug>(EasyAlign)
+"   nmap <Leader>a <Plug>(EasyAlign)
+"
+"
+"   " Bundle "github-theme"
+"   " Bundle "Guardian"
+"   " Bundle "Solarized"
+"   " Bundle "molokai"
+"   " Bundle "phd"
+"   Bundle 'emacscommandline'
+"   "   Bundle "vividchalk.vim"
+"   " colorscheme solarized
+"   " colorscheme molokai
+"   " colorscheme phd
+"
+"   " colorscheme github
+"   " colorscheme guardian
+"   "   colorscheme vividchalk
+"   set background=light
+"   set background=dark
+"
+"   "" set statusline
+"   set statusline  =%6*%y\[%n\]
+"   set statusline +=%1*%f
+"   set statusline +=%2*%{HasPaste()}%m%r%w
+"   set statusline +=%3*[%{&ff}\]\[%{''.(&fenc!=''?&fenc:&enc).''}\]
+"   set statusline +=%4*\ CWD\[%r%{getcwd()}\]
+"   set statusline +=%5*%=[%p%%\ %l/%L:%c\]
+"   hi User1 term=bold ctermfg=Green        ctermbg=Black
+"   hi User2 term=bold ctermfg=Gray         ctermbg=Black
+"   hi User3 term=bold ctermfg=Red          ctermbg=Black
+"   hi User4 term=bold ctermfg=Magenta      ctermbg=Black
+"   hi User5 term=bold ctermfg=White        ctermbg=Black
+"   hi User6 term=bold ctermfg=Yellow       ctermbg=Black
+"
+"   "" set cursor line&column color
+"   hi CursorLine    ctermfg=none ctermbg=black
+"   hi CursorColumn  ctermfg=none ctermbg=black
+"   " autocmd InsertEnter * highlight CursorColumn  ctermfg=none    ctermbg=white
+"   " autocmd InsertLeave * highlight CursorColumn  ctermfg=none    ctermbg=black
+"
+"   function! HasPaste()
+"       if &paste
+"           return '[PASTE]'
+"       else
+"           return ''
+"       endif
+"   endfunction
+"
+"   Bundle "ervandew/supertab"
+"   let g:SuperTabDefaultCompletionType = "<c-n>"
+"
+"   Bundle 'ctrlp.vim'
+"   let g:ctrlp_cmd = 'CtrlPMRU'
+"
+"   Bundle 'EasyMotion'
+"   let g:EasyMotion_leader_key = '<Leader><Leader>'
+"
+"   Bundle 'The-NERD-tree'
+"   Bundle 'The-NERD-Commenter'
+"   "设置相对行号
+"   nmap <leader>nt :NERDTree<cr>:set rnu<cr>
+"   let NERDTreeShowBookmarks=1
+"   let NERDTreeShowFiles=1
+"   let NERDTreeShowHidden=1
+"   let NERDTreeIgnore=['\.$','\~$']
+"   let NERDTreeShowLineNumbers=1
+"   let NERDTreeWinPos=1
+"
+"   Bundle 'UltiSnips'
+"   let g:UltiSnipsExpandTrigger="<c-j>"
+"   let g:UltiSnipsJumpForwardTrigger="<c-j>"
+"   let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+"
+"   "Bundle 'FencView.vim'
+"   "let g:fencview_autodetect=1
+"   "Bundle 'Valloric/YouCompleteMe'
+"   "Bundle 'terryma/vim-multiple-cursors'
+"   "Bundle '_jsbeautify'
+"   "nnoremap <leader>_ff :call g:Jsbeautify()<CR>
+"   "Bundle 'nathanaelkane/vim-indent-guides'
+"   "let g:indent_guides_enable_on_vim_startup=1
+"   "let g:indent_guides_guide_size=1
+"
+"   "}

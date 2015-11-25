@@ -15,4 +15,13 @@ configure
 configure.scan
 libtool
 stamp-h1
+*.suo
+DVR Debug
+DVR Release
+
+
+*.ilk
+*.tlog
+*.cache
+*.tmp
 

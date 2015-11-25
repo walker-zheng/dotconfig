@@ -9,7 +9,7 @@
     ci = commit -s
     ds = diff --staged
     dt = difftool
-    dc = difftool --cached		
+    dc = difftool --cached
     rc = rm --cached
     mt = mergetool
     last = log -1 HEAD
@@ -18,22 +18,47 @@
     hi = log --graph --all --pretty=format:'%C(yellow)%h %C(red)%d %C(reset)%s %C(green)[%an] %C(blue)%ad' --topo-order --graph --date=short
     type = cat-file -t
     dump = cat-file -p
-	d = difftool
+    sr = show --raw
+    b = branch -v
+    r = remote -v
+    t = tag -l
+    unstage = reset HEAD
+    uncommit = reset --soft HEAD^
 
 [core]
-	quotepath = false
-	filemode = false
+    autocrlf = input
+    filemode = false
+    quotepath = false
+    preloadindex = true
+    fscache = true
 [diff]
-	tool = vimdiff
+    tool = vimdiff
 [difftool]
-	prompt = false
+    prompt = false
 [merge]
-	tool = vimdiff
+    tool = vimdiff
 [mergetool]
-	prompt = false
+    prompt = false
 [color]
-	ui = true
+    ui = true
+    diff = auto
+    status = auto
+    branch = auto
+    interactive = auto
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+[format]
+      pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
 [http]
-	sslVerify = false
+    sslVerify = false
 [push]
-	default = simple
+    default = simple
+[gc]
+    auto = 256
