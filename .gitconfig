@@ -26,11 +26,12 @@
     uncommit = reset --soft HEAD^
 
 [core]
-    autocrlf = input
     filemode = false
-    quotepath = false
     preloadindex = true
     fscache = true
+	quotepath = false
+	filemode = false
+    autocrlf = false
 [diff]
     tool = vimdiff
 [difftool]

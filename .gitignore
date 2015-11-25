@@ -25,3 +25,10 @@ DVR Release
 *.cache
 *.tmp
 
+*.ipch
+*.sdf
+*.sln
+*.suo
+prj_win32/ipch
+prj_win32/Release
+prj_win32/Debug
