@@ -7,8 +7,8 @@ if [[ "Cygwin" == "$SYS" ]]; then
     alias pc="cd /cygdrive/d/PCAPP"
     export CYGWIN=nodosfilewarning
 elif [[ "Msys" == "$SYS" ]]; then
-    alias we="cd /f/zmy"
-    alias wiki="cd /f/zmy/wiki"
+    alias we="cd /e/zmy"
+    alias wiki="cd /e/zmy/wiki"
     export MSYS="winsymlinks:lnk"
     #   if [[ `uname -s` == "MSYS_NT-6.3" ]]; then
     #       export PATH=/bin:$PATH
@@ -96,7 +96,7 @@ export TERM=xterm-color
 export LANG=zh_CN.UTF-8
 export STARDICT_DATA_DIR='/usr/share/stardict/dic'
 export SDCV_HISTSIZE=1000
-export LOCATE_PATH=/var/locatedb
+#   export LOCATE_PATH=/var/locatedb
 export PS1
 
 # 快速启动emacs client
