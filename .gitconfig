@@ -25,39 +25,58 @@
     unstage = reset HEAD
     uncommit = reset --soft HEAD^
 
-[core]
-    preloadindex = true
-    fscache = true
-	quotepath = false
-    autocrlf = true
 [diff]
-    tool = vimdiff
+        tool = vsdiffmerge
 [difftool]
-    prompt = false
+        prompt = true
+[difftool "vsdiffmerge"]
+        cmd = \"C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\Common7\\IDE\\vsdiffmerge.exe\" \"$LOCAL\" \"$REMOTE\" //t
+[difftool "vsdiffmerge"]
+        keepbackup = false
 [merge]
-    tool = vimdiff
+        tool = vsdiffmerge
 [mergetool]
-    prompt = false
-[color]
-    ui = true
-    diff = auto
-    status = auto
-    branch = auto
-    interactive = auto
-[color "branch"]
-    current = yellow reverse
-    local = yellow
-    remote = green
-[color "diff"]
-    meta = yellow bold
-    frag = magenta bold
-    old = red bold
-    new = green bold
-[format]
-      pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
-[http]
-    sslVerify = false
+        prompt = true
+[mergetool "vsdiffmerge"]
+        cmd = \"C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\Common7\\IDE\\vsdiffmerge.exe\" \"$REMOTE\" \"$LOCAL\" \"$BASE\" \"$MERGED\" //m
+            trustexitcode = true
+[mergetool "vsdiffmerge"]
+        keepbackup = false
+#   [diff]
+#       tool = vimdiff
+#   [difftool]
+#       prompt = false
+#   [merge]
+#       tool = vimdiff
+#   [mergetool]
+#       prompt = false
+#   [core]
+#       preloadindex = true
+#       fscache = true
+#   	quotepath = false
+#       autocrlf = true
+#   [color]
+#       ui = true
+#       diff = auto
+#       status = auto
+#       branch = auto
+#       interactive = auto
+#   [color "branch"]
+#       current = yellow reverse
+#       local = yellow
+#       remote = green
+#   [color "diff"]
+#       meta = yellow bold
+#       frag = magenta bold
+#       old = red bold
+#       new = green bold
+#   [format]
+#         pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
+#   [http]
+#       sslVerify = false
+#   [push]
+#       default = simple
+#   [gc]
+#       auto = 256
 [push]
-    default = simple
-[gc]
-    auto = 256
+	default = matching

@@ -7,12 +7,13 @@ if [[ "Cygwin" == "$SYS" ]]; then
     alias pc="cd /cygdrive/d/PCAPP"
     export CYGWIN=nodosfilewarning
 elif [[ "Msys" == "$SYS" ]]; then
-    alias we="cd /e/zmy"
+    alias src="cd /e/zmy/analyseServer/analyseServer/Debug"
+    alias we="cd /e/zmy/workspace"
     alias wiki="cd /e/zmy/wiki"
     export MSYS="winsymlinks:lnk"
-    #   if [[ `uname -s` == "MSYS_NT-6.3" ]]; then
-    #       export PATH=/bin:$PATH
-    #   fi
+    if [[ `uname -s` == "MINGW64_NT-6.1" ]]; then
+        export PATH=/mingw64:$PATH
+    fi
     if [[ -f /usr/share/git/completion/git-prompt.sh ]]; then
         . /usr/share/git/completion/git-prompt.sh
     fi
@@ -54,6 +55,7 @@ shopt -s histappend
 shopt -s cmdhist
 shopt -s nocaseglob # 补全不区分大小写
 
+export TMUX_TMPDIR=~/.tmux
 export GOROOT="/cygdrive/d/tools/go"
 export BOOST_DLL="/cygdrive/e/workspace/boost_1_55_0/stage/lib"
 #   export PATH=$PATH:$GOROOT/bin:$BOOST_DLL
