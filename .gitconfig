@@ -1,6 +1,6 @@
 [user]
-    name = walker.zheng
-    email = walker.zheng@inforun.net
+	name = walker.zheng
+	email = walker.zheng@inforun.net
 [alias]
     st = status -sb
     co = checkout
@@ -19,6 +19,7 @@
     type = cat-file -t
     dump = cat-file -p
     sr = show --raw
+    ss = show --stat
     b = branch -v
     r = remote -v
     t = tag -l

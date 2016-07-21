@@ -2,20 +2,30 @@
 
 SYS=`uname -o`
 if [[ "Cygwin" == "$SYS" ]]; then
-    alias we="cd /cygdrive/e/workspace"
-    alias wiki="cd /cygdrive/e/workspace/git/wiki"
-    alias pc="cd /cygdrive/d/PCAPP"
-    export CYGWIN=nodosfilewarning
-elif [[ "Msys" == "$SYS" ]]; then
-    alias src="cd /e/zmy/analyseServer/analyseServer/Debug"
+    mount -c /
+    alias src="cd /e/zmy/analyseServer/analyseServer/win32/Debug"
     alias we="cd /e/zmy/workspace"
     alias wiki="cd /e/zmy/wiki"
+    export CYGWIN=nodosfilewarning
+    if [[ -f /d/msys64/usr/share/git/completion/git-prompt.sh ]]; then
+        . /d/msys64/usr/share/git/completion/git-prompt.sh
+    fi
+elif [[ "Msys" == "$SYS" ]]; then
+    alias src="cd /e/zmy/analyseServer/analyseServer/analyseServer/"
+    alias we="cd /e/zmy/workspace"
+    alias wiki="cd /e/zmy/wiki"
+    alias apm="/c/Users/sh/AppData/Local/atom/bin/apm"
     export MSYS="winsymlinks:lnk"
-    if [[ `uname -s` == "MINGW64_NT-6.1" ]]; then
-        export PATH=/mingw64:$PATH
+    if [[ `uname -s|sed 's#-.*##'` == "MINGW64_NT" ]] ; then
+        #   gitscript="/e/zmy/workspace/git/git-scripts"
+        #   export PATH=/mingw64:$gitscript:$PATH
+        export PATH=/mingw64:/d/Tools/SysinternalsSuite/:/c/Program\ Files\ \(x86\)/Calibre2:/d/Program\ Files\ \(x86\)/Graphviz2.38/bin:$PATH
     fi
     if [[ -f /usr/share/git/completion/git-prompt.sh ]]; then
         . /usr/share/git/completion/git-prompt.sh
+    fi
+    if [[ -f /e/zmy/workspace/git/git-flow-completion/git-flow-completion.bash ]]; then
+        . /e/zmy/workspace/git/git-flow-completion/git-flow-completion.bash
     fi
 elif [[ "Linux" == "$SYS" ]];then
     alias we="cd /home/workspace"
@@ -56,9 +66,10 @@ shopt -s cmdhist
 shopt -s nocaseglob # 补全不区分大小写
 
 export TMUX_TMPDIR=~/.tmux
-export GOROOT="/cygdrive/d/tools/go"
-export BOOST_DLL="/cygdrive/e/workspace/boost_1_55_0/stage/lib"
-#   export PATH=$PATH:$GOROOT/bin:$BOOST_DLL
+#	export BOOST_DLL="/cygdrive/e/workspace/boost_1_55_0/stage/lib"
+#   export EBOOK_DIR="/d/tools/go"
+#   export PATH=$PATH:$EBOOK_DIR
+#	export PATH=$PATH:$BOOST_DLL
 
 # check the hash before searching the PATH directories
 # open file faster
