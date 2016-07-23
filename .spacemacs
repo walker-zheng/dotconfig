@@ -278,6 +278,32 @@ you should place your code here."
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
 
 (add-hook 'before-save-hook 'time-stamp)
+(setq org-publish-project-alist
+      '(
+        ;; These are the main web files
+        ("org-notes"
+         :base-directory "e:/workspace/publish/wiki/org" ;; Change this to your local dir
+         :base-extension "org"
+         :publishing-directory "e:/workspace/publish/wiki"
+         :recursive t
+         :publishing-function org-html-publish-to-html
+         :headline-levels 4             ; Just the default for this project.
+         :auto-preamble t
+         :section-numbers nil
+         :headline-levels 3
+         :table-of-contents nil
+         :style "<link rel='stylesheet' type='text/css' href='css/style.css' />"
+         :style-include-default nil
+         )
+        ;; These are static files (images, pdf, etc)
+        ("org-static"
+         :base-directory "e:/workspace/publish/wiki/org/pic" ;; Change this to your local dir
+         :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf\\|txt\\|asc"
+         :publishing-directory "e:/workspace/publish/wiki/pic"
+         :recursive t
+         :publishing-function org-publish-attachment)
+        ("org" :components ("org-notes" "org-static"))))
+(set-language-environment "UTF-8")
 ;; (yas/global-mode 1)
 ;; (yas/minor-mode-on) ; 以minor mode打开，这样才能配合主mode使用
 ;; (setq yas/prompt-functions
