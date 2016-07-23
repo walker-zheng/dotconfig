@@ -285,6 +285,8 @@ you should place your code here."
 ;; (add-to-list 'yas/snippet-dirs "~/.emacs.d/snippets")
 ;; (add-to-list 'yas/snippet-dirs "~/.emacs.d/yasnippet-org-mode/")
 ;; (add-to-list 'yas/snippet-dirs "~/.emacs.d/yasnippet-snippets/")
+;;
+;; git clone https://github.com/syl20bnr/spacemacs.git
 ;; copy snippet to private/snippets
 ;; git clone https://github.com/AndreaCrotti/yasnippet-snippets.git
 ;; git clone https://github.com/RickMoynihan/yasnippet-org-mode.git
