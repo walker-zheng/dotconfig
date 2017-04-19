@@ -1,7 +1,6 @@
 <VERSION>StrokeIt .9.4</VERSION>
 
 <APP name="[禁用手势的程序]">
-class=BaseBar
 exec=BF1942.exe
 exec=ce.exe
 class=Diablo II
@@ -26,11 +25,10 @@ exec=Game.exe
 exec=Frozen Throne.exe
 class=Warcraft III
 exec=cstrike.exe
-caption=Counter-Strike
 class=LeagueOfLegendsWindowClass
 exec=mstsc.exe
 exec=vmware.exe
-class=VMUIFrame
+exec=dota2.exe
 exclude=true
 </APP>
 
@@ -68,11 +66,9 @@ exclude=true
    HOME = keys, hotkey "[CTRL_DOWN][HOME][CTRL_UP]"
 }
 窗口:任务[↖] {
-   gesture = \ Up
    最小化 = keys, hotkey "[WIN_DOWN]c[WIN_UP]"
 }
 窗口:托盘 [↘] {
-   gesture = \ Down
    最小化 = keys, hotkey "[WIN_DOWN]v[WIN_UP]"
 }
 窗口:向上[↑] {
@@ -117,19 +113,29 @@ exclude=true
 }
 </APP>
 
+<APP name="7z">
+exec=7zFM.exe
+标签:向上[↑] {
+   gesture = Up
+   PRIOR = keys, hotkey "[BACK]"
+}
+</APP>
+
 <APP name="dev">
 exec=MSDEV.EXE
+exec=devenv.exe
+exec=devenv.exe
 ↑ {
    gesture = Up
    新建命令 = keys, hotkey "[ALT_DOWN]g[ALT_UP]"
 }
 窗口:向右[[→] {
    gesture = Right
-   PRIOR = keys, hotkey "[ALT_DOWN][RIGHT][ALT_UP]"
+   PRIOR = keys, hotkey "[CTRL_DOWN][SHIFT_DOWN]-[SHIFT_UP][CTRL_UP]"
 }
 窗口:向左[←] {
    gesture = Left
-   PRIOR = keys, hotkey "[ALT_DOWN][LEFT][ALT_UP]"
+   PRIOR = keys, hotkey "[CTRL_DOWN]-[CTRL_UP]"
 }
 </APP>
 
@@ -145,6 +151,7 @@ exec=chrome.exe
 
 <APP name="si">
 exec=Insight3.exe
+exec=Insight.exe
 标签:定义[↑] {
    gesture = Up
    PRIOR = keys, hotkey "[CTRL_DOWN]=[CTRL_UP]"
@@ -175,7 +182,7 @@ exec=Insight3.exe
 }
 搜索 [↓↑] {
    gesture = Down-Up
-   F5 = keys, hotkey  "[CTRL_DOWN][ALT_DOWN]f[ALT_UP][CTRL_UP]"
+   F5 = keys, hotkey "[CTRL_DOWN]f[CTRL_UP]"
 }
 引用 [→←] {
    gesture = Right-Left

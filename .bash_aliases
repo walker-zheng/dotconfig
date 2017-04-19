@@ -3,7 +3,7 @@
 SYS=`uname -o`
 if [[ "Cygwin" == "$SYS" ]]; then
     mount -c /
-    alias src="cd /e/zmy/analyseServer/analyseServer/win32/Debug"
+    alias src="cd /e/zmy/analyseServer/analyseServer/analyseServer/"
     alias we="cd /e/zmy/workspace"
     alias wiki="cd /e/zmy/wiki"
     export CYGWIN=nodosfilewarning
@@ -16,10 +16,13 @@ elif [[ "Msys" == "$SYS" ]]; then
     alias wiki="cd /e/zmy/wiki"
     alias apm="/c/Users/sh/AppData/Local/atom/bin/apm"
     export MSYS="winsymlinks:lnk"
+    if [[ `uname -s|sed 's#-.*##'` == "MSYS_NT" ]] ; then
+        export PATH=/bin:$PATH
+    fi
     if [[ `uname -s|sed 's#-.*##'` == "MINGW64_NT" ]] ; then
         #   gitscript="/e/zmy/workspace/git/git-scripts"
         #   export PATH=/mingw64:$gitscript:$PATH
-        export PATH=/mingw64:/d/Tools/SysinternalsSuite/:/c/Program\ Files\ \(x86\)/Calibre2:/d/Program\ Files\ \(x86\)/Graphviz2.38/bin:$PATH
+        export PATH=/mingw64:/d/Tools/SysinternalsSuite/:/d/Program\ Files\ \(x86\)/Conan/conan:/c/Program\ Files\ \(x86\)/Calibre2:/d/Program\ Files\ \(x86\)/Graphviz2.38/bin:$PATH
     fi
     if [[ -f /usr/share/git/completion/git-prompt.sh ]]; then
         . /usr/share/git/completion/git-prompt.sh
@@ -49,7 +52,10 @@ alias grep='grep --color'
 
 alias ..='cd ..'
 alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
 
+alias curl='curl -s'
 alias md='mkdir -p'
 alias vd='vimdiff'
 alias vi='vi -o'

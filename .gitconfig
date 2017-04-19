@@ -1,11 +1,11 @@
 [user]
-	name = walker.zheng
-	email = walker.zheng@inforun.net
+    name = walker.zheng
+    email = walker.zheng@inforun.net
 [alias]
     st = status -sb
     co = checkout
     br = branch
-    mg = merge
+    mg = merge --no-ff
     ci = commit -s
     ds = diff --staged
     dt = difftool
@@ -25,63 +25,39 @@
     t = tag -l
     unstage = reset HEAD
     uncommit = reset --soft HEAD^
-
 [diff]
-        tool = vsdiffmerge
+    tool = vsdiffmerge
 [difftool]
-        prompt = true
+    prompt = true
 [difftool "vsdiffmerge"]
-        cmd = \"C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\Common7\\IDE\\vsdiffmerge.exe\" \"$LOCAL\" \"$REMOTE\" //t
+    cmd = \"C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\Common7\\IDE\\vsdiffmerge.exe\" \"$LOCAL\" \"$REMOTE\" //t
 [difftool "vsdiffmerge"]
-        keepbackup = false
+    keepbackup = false
 [merge]
-        tool = vsdiffmerge
+    tool = vsdiffmerge
 [mergetool]
-        prompt = true
+    prompt = true
 [mergetool "vsdiffmerge"]
-        cmd = \"C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\Common7\\IDE\\vsdiffmerge.exe\" \"$REMOTE\" \"$LOCAL\" \"$BASE\" \"$MERGED\" //m
-            trustexitcode = true
+    cmd = \"C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\Common7\\IDE\\vsdiffmerge.exe\" \"$REMOTE\" \"$LOCAL\" \"$BASE\" \"$MERGED\" //m
+    trustexitcode = true
 [mergetool "vsdiffmerge"]
-        keepbackup = false
-#   [diff]
-#       tool = vimdiff
-#   [difftool]
-#       prompt = false
-#   [merge]
-#       tool = vimdiff
-#   [mergetool]
-#       prompt = false
-#   [core]
-#       preloadindex = true
-#       fscache = true
-#   	quotepath = false
-#       autocrlf = true
-#   [color]
-#       ui = true
-#       diff = auto
-#       status = auto
-#       branch = auto
-#       interactive = auto
-#   [color "branch"]
-#       current = yellow reverse
-#       local = yellow
-#       remote = green
-#   [color "diff"]
-#       meta = yellow bold
-#       frag = magenta bold
-#       old = red bold
-#       new = green bold
-#   [format]
-#         pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
-#   [http]
-#       sslVerify = false
-#   [push]
-#       default = simple
-#   [gc]
-#       auto = 256
+    keepbackup = false
+[gc]
+    auto = 512
 [push]
-	default = matching
+    default = matching
 [i18n]
-	commitencoding = utf-8
+    commitencoding = utf-8
 [core]
-	quotepath = false
+    quotepath = false
+    autocrlf = true
+    filemode = false
+    compression = -1
+[webui]
+    autoupdate = true
+[apply]
+    whitespace = nowarn
+[pack]
+    windowMemory =32m
+    packSizeLimit =32m
+    threads = 8

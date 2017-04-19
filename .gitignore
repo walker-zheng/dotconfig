@@ -18,7 +18,7 @@ stamp-h1
 DVR Debug
 DVR Release
 
-
+.idea/
 *.ilk
 *.tlog
 *.cache
@@ -28,6 +28,8 @@ DVR Release
 *.sdf
 *.sln
 *.suo
+*.VC.db
+.vs/
 prj_win32/ipch
 prj_win32/Release
 prj_win32/Debug
