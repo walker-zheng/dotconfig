@@ -58,6 +58,6 @@
 [apply]
     whitespace = nowarn
 [pack]
-    windowMemory =32m
-    packSizeLimit =32m
+    windowMemory =64m
+    packSizeLimit =64m
     threads = 8

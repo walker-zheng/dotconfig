@@ -45,6 +45,8 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sets how many lines of history VIM has to remember
 set history=700
+set cursorline 
+set number
 
 " Enable filetype plugins
 filetype plugin on
@@ -121,10 +123,10 @@ set tm=500
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
-"   syntax enable
+syntax enable
 
 "   colorscheme desert
-set background=dark
+"	set background=dark
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -243,7 +245,7 @@ set viminfo^=%
 set laststatus=2
 
 " Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ [%l:%c]
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

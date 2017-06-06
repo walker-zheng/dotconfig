@@ -1,4 +1,4 @@
-    #!/usr/bin/bash
+#!/usr/bin/bash
 
 SYS=`uname -o`
 if [[ "Cygwin" == "$SYS" ]]; then
@@ -34,21 +34,20 @@ elif [[ "Linux" == "$SYS" ]];then
     alias we="cd /home/workspace"
 fi
 
-    alias www="cd /srv/www/htdocs/wiki"
-    alias ~="cd ~"
+alias www="cd /srv/www/htdocs/wiki"
+alias ~="cd ~"
 
-    # some more ls aliases
-    # alias ls='gnuls --color=auto --show-control-chars'
-    alias grep='grep --color'                     # show differences in colour
-    alias egrep='egrep --color=auto'              # show differences in colour
-    alias fgrep='fgrep --color=auto'              # show differences in colour
-    alias ls='ls -hF --color=tty'                 # classify files in colour
-    alias dir='ls --color=auto --format=vertical'
-    alias vdir='ls --color=auto --format=long'
-    alias ll='ls -alF'
-    alias la='ls -A'
-    alias l='ls -aF'
-    alias grep='grep --color'
+# some more ls aliases
+# alias ls='gnuls --color=auto --show-control-chars'
+alias grep='grep --color'                     # show differences in colour
+alias egrep='egrep --color=auto'              # show differences in colour
+alias fgrep='fgrep --color=auto'              # show differences in colour
+alias ls='ls -hF --color=tty'                 # classify files in colour
+alias dir='ls --color=auto --format=vertical'
+alias vdir='ls --color=auto --format=long'
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -aF'
 
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -60,9 +59,9 @@ alias md='mkdir -p'
 alias vd='vimdiff'
 alias vi='vi -o'
 
-    FIGNORE=.dll
-    stty stop ""
-    export HISTFILE=~/.bash_history
+FIGNORE=.dll
+stty stop ""
+export HISTFILE=~/.bash_history
 export HISTCONTROL="erasedups:ignoreboth"
 export HISTFILESIZE=500000
 export HISTSIZE=5000
