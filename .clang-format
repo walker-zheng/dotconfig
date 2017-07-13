@@ -6,9 +6,9 @@ SortIncludes:    false
 UseTab: Never
 IndentWidth: 4
 ColumnLimit: 120
-BreakBeforeBinaryOperators: NonAssignment
+BreakBeforeBinaryOperators: All
 BreakBeforeBraces: Custom
-BraceWrapping: { AfterControlStatement: true, BeforeElse: true, AfterFunction: true }
+BraceWrapping: { AfterControlStatement: true, BeforeElse: true, AfterFunction: true, AfterClass: true }
 NamespaceIndentation: All
 PenaltyReturnTypeOnItsOwnLine: 1000
 PointerAlignment: Middle
