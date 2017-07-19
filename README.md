@@ -1,0 +1,7 @@
+![designpattern](img/designpattern.png)
+![git](img/git.png)
+![git-flow](img/git-flow.png)
+![git-model](img/git-model.png)
+![json](img/json.gif)
+![lockfree](img/lockfree.png)
+![tcpip-status](img/tcpip-status.jpg)
