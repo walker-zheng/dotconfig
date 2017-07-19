@@ -3,23 +3,30 @@
 
 VERSION='v0.0.4 by walker'
 CURR_DIR=$(pwd)
+
+### 待配置
+BANKCODE=( 0401 0501 0901 1502 1601 1602 )                                          # 机构码 列表
 MSI_DIR='/e/zmy/analyseServer/analyseServer/Release/msi'                            # 分析服务器 版本目录，会安装最新版本
-MSI_FILE=$(cd $MSI_DIR && ls -t *.msi|sed -n '1p')                                  # 当前目录下 最新msi
 TOMCAT='/d/xampp/tomcat/bin/startup.bat'                                            # tomcat启动脚本
 CONFIG_FILE='/d/xampp/tomcat/webapps/iics/WEB-INF/classes/spring-hibernate.xml'     # 内控配置 修改 核心数据解析时间(03 02 01) 为 当前时间2min后
 OLD_FILE='/d/2017-06-01.txt'                                                        # 核心数据 文件
-DATA_FILE="/d/"$(date +%Y-%m-%d)".txt"                                              # 核心数据
-
-BANKCODE=( 0401 0501 0901 1502 1601 1602 )                                          #
-SRC_DIR='/c/Program Files/Inforun/analyseServer'                                    # 分析服务器 安装目录
-LOG_DIR='D:/Log'                                                                    # 分析服务器 日志目录
-va_PORT=64000                                                                          # 算法 端口
-redis_PORT=6379                                                                     # redis 端口
+sleep_time=30																		# 30sec等待			(tomcat完全启动)
+parse_time=2																		# 2min后解析核心数据	(tomcat完全启动)
+va_PORT=64000                                                                       # 算法 端口
 notify_PORT=7900                                                                    # 分析服务器 监听端口(内控通知端口)
 HEARTBEAT=30                                                                        # 心跳间隔
 URL='http://192.168.1.31:8080/inforunws/service/rest'                               # 内控URL
-#   URL='http://192.168.1.4:8080/inforunws/service/rest'
 
+### 以下 不要修改
+MSI_FILE=$(cd $MSI_DIR && ls -t *.msi|sed -n '1p')                                  # 当前目录下 最新msi
+DATA_FILE="/d/"$(date +%Y-%m-%d)".txt"                                              # 生成新的核心数据
+SRC_DIR='/c/Program Files/Inforun/analyseServer'                                    # 分析服务器 安装目录
+LOG_DIR='D:/Log'                                                                    # 分析服务器 日志目录
+default_notify_PORT=7900															# 配置文件默认设置
+default_va_PORT=64000																# 配置文件默认设置
+redis_PORT=6379                                                                     # redis 端口
+
+#############
 function usage()
 {
     cat <<EOF |GREP_COLOR='01;32' grep --color=always .
@@ -83,9 +90,9 @@ function mkcopy()
         [ -d "$SRC_DIR" ] && cp -R "$SRC_DIR" build/$arg
         sed -i 's#\(.*\).path =.*#\1.path = '$LOG_DIR'/'$arg'.rg.log#'                                                  build/$arg/log_rg.properties
         sed -i 's#\(.*\).path =.*#\1.path = '$LOG_DIR'/'$arg'.va.log#'                                                  build/$arg/log_va.properties
-        sed -i 's#<port>'$va_PORT'</port>#<port>'$(($va_PORT + $COUNT))'</port>#'                                       build/$arg/vaServer.xml
-        sed -i 's#<port>'$va_PORT'</port>#<port>'$(($va_PORT + $COUNT))'</port>#'                                       build/$arg/analyseServer64.xml
-        sed -i 's#<port>'$notify_PORT'</port>#<port>'$(($notify_PORT + $COUNT))'</port>#'                               build/$arg/analyseServer64.xml
+        sed -i 's#<port>'$default_va_PORT'</port>#<port>'$(($va_PORT + $COUNT))'</port>#'                               build/$arg/vaServer.xml
+        sed -i 's#<port>'$default_va_PORT'</port>#<port>'$(($va_PORT + $COUNT))'</port>#'                               build/$arg/analyseServer64.xml
+        sed -i 's#<port>'$default_notify_PORT'</port>#<port>'$(($notify_PORT + $COUNT))'</port>#'                       build/$arg/analyseServer64.xml
         sed -i 's#<bankCode>.*</bankCode>#<bankCode>'$arg'</bankCode>#'                                                 build/$arg/analyseServer64.xml
         sed -i 's#<url>.*</url>#<url>'$URL'</url>#'                                                                     build/$arg/analyseServer64.xml
         sed -i 's#<heartBeatInterval>.*</heartBeatInterval>#<heartBeatInterval>'$HEARTBEAT'</heartBeatInterval>#gi'     build/$arg/analyseServer64.xml
@@ -96,10 +103,10 @@ function mkcopy()
 }
 function modconfig()
 {
-    TIME=$(date +%S" "%M" "%H --date='2 minutes')
-    TIME_ECHO=$(date +%X --date='2 minutes')
+    TIME=$(date +%S" "%M" "%H --date="$parse_time minutes")
+    TIME_ECHO=$(date +%X --date="$parse_time minutes")
     echo '修改配置' $DATA_FILE|grep --color=always . && cp $OLD_FILE $DATA_FILE && sed -i 's#|\(2017/[^|]*\)#|'"$(date +%Y/%m/%d --date='1 day ago')"'#' $DATA_FILE && sed -n '1p' $DATA_FILE
-    echo '修改配置' $CONFIG_FILE '核心数据解析时间:' $TIME_ECHO|grep --color=always . && ([ -f ${CONFIG_FILE}.bak ] && [ $(grep -F 'property name="cronExpression" value="03 02 01' ${CONFIG_FILE}.bak|wc -l) == 1 ]) && (cp $CONFIG_FILE{.bak,} && sed -i 's#\(property name="cronExpression" value="\)\(03 02 01\)#\1'"$TIME"'#' $CONFIG_FILE )|| ( ([  -f ${CONFIG_FILE}.bak ] && rm -rf ${CONFIG_FILE}.bak)|( ISOK=$(grep -F 'property name="cronExpression" value="03 02 01' $CONFIG_FILE|wc -l) && [ $ISOK ==  0 ] && echo "脚本无法修改文件[$CONFIG_FILE]:检查到 核心数据解析时间不为 03 02 01" || cp $CONFIG_FILE{,.bak} && sed -i 's#\(property name="cronExpression" value="\)\(03 02 01\)#\1'"$TIME"'#' $CONFIG_FILE) )
+    echo '修改配置' $CONFIG_FILE '核心数据解析时间:' $TIME_ECHO "("$parse_time "min之后)"|grep --color=always . && ([ -f ${CONFIG_FILE}.bak ] && [ $(grep -F 'property name="cronExpression" value="03 02 01' ${CONFIG_FILE}.bak|wc -l) == 1 ]) && (cp $CONFIG_FILE{.bak,} && sed -i 's#\(property name="cronExpression" value="\)\(03 02 01\)#\1'"$TIME"'#' $CONFIG_FILE )|| ( ([  -f ${CONFIG_FILE}.bak ] && rm -rf ${CONFIG_FILE}.bak)|( ISOK=$(grep -F 'property name="cronExpression" value="03 02 01' $CONFIG_FILE|wc -l) && [ $ISOK ==  0 ] && echo "脚本无法修改文件[$CONFIG_FILE]:检查到 核心数据解析时间不为 03 02 01" || cp $CONFIG_FILE{,.bak} && sed -i 's#\(property name="cronExpression" value="\)\(03 02 01\)#\1'"$TIME"'#' $CONFIG_FILE) )
     grep --color=always -n "$TIME" $CONFIG_FILE{,}|sort|uniq
 }
 function print_info()
@@ -117,9 +124,9 @@ function notify()
     for arg in ${BANKCODE[*]}
     do
         (( COUNT_notify += 1 ))
-        echo '{"messageType":'$1'}' localhost:"$(($notify_PORT + $COUNT_notify))"
+        echo '{"messageType":"'$1'"}' localhost:"$(($notify_PORT + $COUNT_notify))"
         #echo '{"messageType":'$1'}'|nc localhost $(($notify_PORT + $COUNT_notify))
-        echo '{"messageType":'$1'}'|socat - TCP:localhost:$(($notify_PORT + $COUNT_notify))
+        echo '{"messageType":"'$1'"}'|socat - TCP:localhost:$(($notify_PORT + $COUNT_notify))
     done
 }
 function version()
@@ -153,7 +160,7 @@ do
     [ "$1" == "--stat" ] && (for line in /d/log/*.rg.log; do echo -e $line|grep --color=always . ;time=$(grep -E '消息 处理\[任务\]\[struct SMsgVATaskEndNotify' $line|sed -n '1p;$p'|sed 's/\]\[.*$//g;s/\[//g'|xargs.exe -i date --date='{}' +%s|tr "\n" "-"|sed 's/^/(0-(/;s#-$#))#;s/$/\n/'|bc);count=$(grep -cE '消息 处理\[任务\]\[struct SMsgVATaskEndNotify' $line);speed=$(echo "("$count"-1)*60/"$time|bc);echo "("$count"-1)*60/"$time"="$speed;done;)
     [ "$1" == "-e" ] && (grep --color=always -n '\[E\]' /d/log/*.rg.log|sed 's/:.*:.*#/#/g'|sed 's/失败:.*/失败:/g;s/id:.*/id:/g'|sort|uniq -c| GREP_COLOR='01;32' grep --color=always '#.*';)
     [ "$1" == "-a" ] && ($0 -k -i -c -r -p)
-    [ "$1" == "-r" ] && ($0 -1; sleep 3; $0 -2)
+    [ "$1" == "-r" ] && ($0 -1; echo '等待启动 5 sec'|grep --color=always . && sleep 5; $0 -2)
     [ "$1" == "-h" ] && (echo '挂载信息' | grep --color=always . && df -h && usage)
     [ "$1" == "-n" ] && ([ $# == 2 ] && notify $2 && exit || notify 222 && exit)
     [ "$1" == "-m" ] && modconfig
@@ -162,7 +169,7 @@ do
     [ "$1" == "-v" ] && version
 
     [ "$1" == "-s" ] && (echo '停止tomcat' | grep --color=always . && eval $(tasklist.exe |grep -ia 'java.exe'|awk '{print "-PID "$2}'|tr "\n" " " |xargs.exe -i echo {}|sed 's/^/taskkill -F /'))
-    [ "$1" == "-t" ] && (echo "启动tomcat"| grep --color=always . && $TOMCAT) && (echo "等待tomcat完全启动(30s)"| grep --color=always . && sleep 30)
+    [ "$1" == "-t" ] && (echo "启动tomcat"| grep --color=always . && $TOMCAT) && (echo "等待tomcat完全启动("$sleep_time" sec)"| grep --color=always . && sleep $sleep_time )
     [ "$1" == "-k" ] && (echo '杀死进程[vaServer64 & analyserServer64]'| grep --color=always . && eval $(tasklist.exe |grep -ia er64.exe|awk '{print "-PID "$2}'|tr "\n" " " |xargs.exe -i echo {}|sed 's/^/taskkill -F /'))
     [ "$1" == "-i" ] && (echo '卸载并安装['$MSI_DIR"/"$MSI_FILE']'| grep --color=always . && (msiexec.exe -q -x $(reg query "HKLM\SOFTWARE\Inforun\analyseServer"|grep ProductCode|awk '{print $3}') &> /dev/null );(cd $MSI_DIR && msiexec.exe -q -i $MSI_FILE) )
     [ "$1" == "-c" ] && (echo '克隆副本' | grep --color=always . && mkcopy)
