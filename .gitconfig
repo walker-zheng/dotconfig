@@ -53,6 +53,9 @@
     autocrlf = true
     filemode = false
     compression = -1
+    ignoreStat = true
+    fscache = true
+    preloadindex = true
 [webui]
     autoupdate = true
 [apply]
