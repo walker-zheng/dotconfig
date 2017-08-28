@@ -10,7 +10,7 @@ MSI_DIR='/e/zmy/analyseServer/analyseServer/Release/msi'                        
 TOMCAT='/d/xampp/tomcat/bin/startup.bat'                                            # tomcat启动脚本
 CONFIG_FILE='/d/xampp/tomcat/webapps/iics/WEB-INF/classes/spring-hibernate.xml'     # 内控配置 修改 核心数据解析时间(03 02 01) 为 当前时间2min后
 OLD_FILE='/d/2017-06-01.txt'                                                        # 核心数据 文件
-sleep_time=30																		# 30sec等待			(tomcat完全启动)
+sleep_time=120																		# 30sec等待			(tomcat完全启动)
 parse_time=2																		# 2min后解析核心数据	(tomcat完全启动)
 va_PORT=64000                                                                       # 算法 端口
 notify_PORT=7900                                                                    # 分析服务器 监听端口(内控通知端口)
@@ -41,9 +41,10 @@ Op:
     -x          日志过滤
     [file]      统计日志[file]
     -l          统计日志 (/d/log/*.rg.log)
+    -e          统计日志错误
     -ll         监测日志统计 (/d/log/*.rg.log)
     -ls         监测处理速度 (cout/min)
-    -e          统计日志错误
+    -le         监测日志错误
     -n [msg]    手动通知分析(模拟内控, msg默认222)
     -1          启动所有vaServer64
     -2          启动所有analyserServer64
@@ -131,15 +132,17 @@ function notify()
 }
 function version()
 {
+    ( cd /e/zmy/analyseServer/analyseServer/Release && ./getVer.sh )
     ( cd /e/zmy/analyseServer/analyseServer/Release;
     ver_old=$(git tag|sort -rn|sed -n '1p'); ver_new=$(grep PRODUCT ../analyseServer/version.h|sed 's/[^"]*"//;s/"//'); 
-    [ $ver_old == $ver_new ] && (echo 没有增加版本号 $ver_new|GREP_COLOR='03;36' grep --color=always .) || 
+    ( [ $ver_old != $ver_new ] && (( "0" == $(grep -c "$ver_new" 发布日志.md) )) ) && 
     (
     cp 发布日志.md{,.bak};
     new_log=$(echo "##### $ver_new [$(date +%Y-%m-%d)]" && git log "$ver_old".. --oneline |grep -v 'Merge'|grep -v $ver_new|sed 's/[^ ]* //;s/[0-9]*\. /\n/g'|grep -v '^$'|cat -n -|sed 's/^\([ 0-9]*\)\(.*\)/\1.\2/;s/\t/ /g')
     echo "$new_log"
     cat  <(cat 发布日志.md|sed -n '1,2p') <(echo "$new_log") <(cat 发布日志.md|sed -n '3,$p') > 发布日志.md.bak; 
-    mv 发布日志.md{.bak,}) )
+    mv 发布日志.md{.bak,}) ||
+        (echo 没有增加版本号 $ver_new|GREP_COLOR='03;36' grep --color=always .) )
 }
 function loop()
 {
@@ -158,7 +161,7 @@ do
     
     [ "$1" == "-l" ] && ($0 /d/log/*.rg.log)
     [ "$1" == "--stat" ] && (for line in /d/log/*.rg.log; do echo -e $line|grep --color=always . ;time=$(grep -E '消息 处理\[任务\]\[struct SMsgVATaskEndNotify' $line|sed -n '1p;$p'|sed 's/\]\[.*$//g;s/\[//g'|xargs.exe -i date --date='{}' +%s|tr "\n" "-"|sed 's/^/(0-(/;s#-$#))#;s/$/\n/'|bc);count=$(grep -cE '消息 处理\[任务\]\[struct SMsgVATaskEndNotify' $line);speed=$(echo "("$count"-1)*60/"$time|bc);echo "("$count"-1)*60/"$time"="$speed;done;)
-    [ "$1" == "-e" ] && (grep --color=always -n '\[E\]' /d/log/*.rg.log|sed 's/:.*:.*#/#/g'|sed 's/失败:.*/失败:/g;s/id:.*/id:/g'|sort|uniq -c| GREP_COLOR='01;32' grep --color=always '#.*';)
+    [ "$1" == "-e" ] && (grep --color=always -n '\[E\]' /d/log/*.rg.log|awk -F[#:] '{print $1"#"$6}'|sort|uniq -c| GREP_COLOR='01;32' grep --color=always '#.*';)
     [ "$1" == "-a" ] && ($0 -k -i -c -r -p)
     [ "$1" == "-r" ] && ($0 -1; echo '等待启动 5 sec'|grep --color=always . && sleep 5; $0 -2)
     [ "$1" == "-h" ] && (echo '挂载信息' | grep --color=always . && df -h && usage)
@@ -180,3 +183,4 @@ do
 
     shift
 done
+

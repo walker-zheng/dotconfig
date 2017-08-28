@@ -13,12 +13,9 @@ if [[ "Cygwin" == "$SYS" ]]; then
 elif [[ "Msys" == "$SYS" ]]; then
     alias src="cd /e/zmy/analyseServer/analyseServer/analyseServer/"
     alias we="cd /e/zmy/workspace"
-    alias wiki="cd /e/zmy/wiki"
+    alias wiki="cd /e/zmy/publish/wiki"
     alias apm="/c/Users/sh/AppData/Local/atom/bin/apm"
     export MSYS="winsymlinks:lnk"
-    if [[ `uname -s|sed 's#-.*##'` == "MSYS_NT" ]] ; then
-        export PATH=/bin:$PATH
-    fi
     if [[ `uname -s|sed 's#-.*##'` == "MINGW64_NT" ]] ; then
         #   gitscript="/e/zmy/workspace/git/git-scripts"
         #   export PATH=/mingw64:$gitscript:$PATH
