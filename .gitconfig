@@ -15,7 +15,7 @@
     last = log -1 HEAD
     latest = for-each-ref --sort=-committerdate --format='%(committername)@%(refname:short) [%(committerdate:short)] %(contents')
     ls = log --graph --all --pretty=format:'%C(yellow)%h %C(blue)%ad %C(red)%d %C(reset)%s %C(green)[%cn]' --decorate --date=short
-    hi = log --graph --all --pretty=format:'%C(yellow)%h %C(red)%d %C(reset)%s %C(green)[%an] %C(blue)%ad' --topo-order --graph --date=short
+    hi = log --all --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
     type = cat-file -t
     dump = cat-file -p
     sr = show --raw
@@ -43,7 +43,7 @@
 [mergetool "vsdiffmerge"]
     keepbackup = false
 [gc]
-    auto = 512
+    auto = 256
 [push]
     default = matching
 [i18n]
@@ -53,7 +53,7 @@
     autocrlf = true
     filemode = false
     compression = -1
-    ignoreStat = true
+    preloadindex = true
     fscache = true
     preloadindex = true
 [webui]
