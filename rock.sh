@@ -19,7 +19,6 @@ URL='http://192.168.1.31:8080/inforunws/service/rest'                           
 
 ### 以下 不要修改
 MSI_FILE=$(cd $MSI_DIR && ls -t *.msi|sed -n '1p')                                  # 当前目录下 最新msi
-DATA_FILE="/d/"$(date +%Y-%m-%d)".txt"                                              # 生成新的核心数据
 SRC_DIR='/c/Program Files/Inforun/analyseServer'                                    # 分析服务器 安装目录
 LOG_DIR='D:/Log'                                                                    # 分析服务器 日志目录
 default_notify_PORT=7900															# 配置文件默认设置
@@ -34,30 +33,30 @@ Usage:
     ./rock.sh [op] [file]
     分析服务器测试用自动脚本[卸载/安装/修改/克隆/部署/启动/停止/日志分析]
 Op:
-                无参数命令[-h -m -s -t -a]
+                无参数命令[-h -t -i]
+    [file]      统计日志[file]
     -h          显示usage
     -V          版本信息
     -v          更新版本日志
+    -vv         当前安装版本:analyseServer 
     -x          日志过滤
-    [file]      统计日志[file]
     -l          统计日志 (/d/log/*.rg.log)
     -e          统计日志错误
     -ll         监测日志统计 (/d/log/*.rg.log)
     -ls         监测处理速度 (cout/min)
     -le         监测日志错误
+    -m [day]    修改配置(默认0,当天)
     -n [msg]    手动通知分析(模拟内控, msg默认222)
     -1          启动所有vaServer64
     -2          启动所有analyserServer64
-    -m          修改配置
     -s          停止tomcat
-    -t          启动tomcat
-    -a          顺序执行后续命令[-k -i -c -r -p]
+    -t          停止,修改,启动tomcat[-s -m -t]
     -k          杀死进程
-    -i          卸载并安装
+    -i          卸载并安装,停止,克隆,启动[-i -k -c -r -p]
     -c          克隆副本 (mkcopy)
     -cc         显示克隆信息
     -r          [-1 -2]
-    -p          已启动副本进程，TCP连接端口
+    -p          已启动副本进程
 EOF
 }
 
@@ -104,18 +103,20 @@ function mkcopy()
 }
 function modconfig()
 {
+    [ $# != 1 ] && exit
     TIME=$(date +%S" "%M" "%H --date="$parse_time minutes")
     TIME_ECHO=$(date +%X --date="$parse_time minutes")
-    echo '修改配置' $DATA_FILE|grep --color=always . && cp $OLD_FILE $DATA_FILE && sed -i 's#|\(2017/[^|]*\)#|'"$(date +%Y/%m/%d --date='1 day ago')"'#' $DATA_FILE && sed -n '1p' $DATA_FILE
+    DATA_FILE="/d/"$(date -d "$1 day" +%Y-%m-%d)".txt"                                              # 生成新的核心数据
+    echo '修改配置' $DATA_FILE|grep --color=always . && cp $OLD_FILE $DATA_FILE && sed -i 's#|\(2017/[^|]*\)#|'"$(date +%Y/%m/%d --date="$(($1-1)) day")"'#' $DATA_FILE && sed -n '1p' $DATA_FILE
     echo '修改配置' $CONFIG_FILE '核心数据解析时间:' $TIME_ECHO "("$parse_time "min之后)"|grep --color=always . && ([ -f ${CONFIG_FILE}.bak ] && [ $(grep -F 'property name="cronExpression" value="03 02 01' ${CONFIG_FILE}.bak|wc -l) == 1 ]) && (cp $CONFIG_FILE{.bak,} && sed -i 's#\(property name="cronExpression" value="\)\(03 02 01\)#\1'"$TIME"'#' $CONFIG_FILE )|| ( ([  -f ${CONFIG_FILE}.bak ] && rm -rf ${CONFIG_FILE}.bak)|( ISOK=$(grep -F 'property name="cronExpression" value="03 02 01' $CONFIG_FILE|wc -l) && [ $ISOK ==  0 ] && echo "脚本无法修改文件[$CONFIG_FILE]:检查到 核心数据解析时间不为 03 02 01" || cp $CONFIG_FILE{,.bak} && sed -i 's#\(property name="cronExpression" value="\)\(03 02 01\)#\1'"$TIME"'#' $CONFIG_FILE) )
     grep --color=always -n "$TIME" $CONFIG_FILE{,}|sort|uniq
 }
 function print_info()
 {
-    echo '已启动副本进程' | grep --color=always . && ps -ef |grep --color=always 'build.*64'
-    echo '通知监听端口' | grep --color=always . && echo $notify_PORT|sed -n 's#^\(..\).*#\1#p'|xargs.exe -i grep --color=always '\([[:digit:]]\{1,3\}\.\)\{3\}[[:digit:]]\{1,3\}:'{} <(netstat -abon|tr "\n\r" " "|sed 's#TCP#\nTCP#g')
-    echo '算法服务端口' | grep --color=always . && echo $va_PORT|sed -n 's#^\(..\).*#\1#p'|xargs.exe -i grep --color=always '\([[:digit:]]\{1,3\}\.\)\{3\}[[:digit:]]\{1,3\}:'{} <(netstat -abon|tr "\n\r" " "|sed 's#TCP#\nTCP#g')
-    echo 'redis服务端口' | grep --color=always . && echo $redis_PORT|xargs.exe -i grep --color=always '\([[:digit:]]\{1,3\}\.\)\{3\}[[:digit:]]\{1,3\}:'{} <(netstat -abon|tr "\n\r" " "|sed 's#TCP#\nTCP#g')
+    echo '已启动副本进程' | grep --color=always . && ps -ef |sort -k 6|grep --color=always 'build.*64'
+    #   echo '通知监听端口' | grep --color=always . && echo $notify_PORT|sed -n 's#^\(..\).*#\1#p'|xargs.exe -i grep --color=always '\([[:digit:]]\{1,3\}\.\)\{3\}[[:digit:]]\{1,3\}:'{} <(netstat -abon|tr "\n\r" " "|sed 's#TCP#\nTCP#g')
+    #   echo '算法服务端口' | grep --color=always . && echo $va_PORT|sed -n 's#^\(..\).*#\1#p'|xargs.exe -i grep --color=always '\([[:digit:]]\{1,3\}\.\)\{3\}[[:digit:]]\{1,3\}:'{} <(netstat -abon|tr "\n\r" " "|sed 's#TCP#\nTCP#g')
+    #   echo 'redis服务端口' | grep --color=always . && echo $redis_PORT|xargs.exe -i grep --color=always '\([[:digit:]]\{1,3\}\.\)\{3\}[[:digit:]]\{1,3\}:'{} <(netstat -abon|tr "\n\r" " "|sed 's#TCP#\nTCP#g')
 }
 function notify()
 {
@@ -134,7 +135,7 @@ function version()
 {
     ( cd /e/zmy/analyseServer/analyseServer/Release && ./getVer.sh )
     ( cd /e/zmy/analyseServer/analyseServer/Release;
-    ver_old=$(git tag|sort -rn|sed -n '1p'); ver_new=$(grep PRODUCT ../analyseServer/version.h|sed 's/[^"]*"//;s/"//'); 
+    ver_old=$(git tag|sort -rV|sed -n '1p'); ver_new=$(grep PRODUCT ../analyseServer/version.h|sed 's/[^"]*"//;s/"//'); 
     ( [ $ver_old != $ver_new ] && (( "0" == $(grep -c "$ver_new" 发布日志.md) )) ) && 
     (
     cp 发布日志.md{,.bak};
@@ -148,38 +149,46 @@ function loop()
 {
     while true; do $0 $1;echo "========================================="|GREP_COLOR='03;36' grep --color=always .; sleep 3;done
 }
-[ $# == 0 ] && $0 -h -k -s -m -t -a && exit
+[ $# == 0 ] && $0 -h -t && (echo "等待tomcat完全启动("$sleep_time" sec)"| grep --color=always . && sleep $sleep_time)  && $0 -i && exit
 
 until [ -z "$1" ]
 do
-    [ -f "$1" ] && (echo '日志统计' $1|GREP_COLOR='01;32' grep --color=always . && grep -E 'waiting|推送|数据|上传|缓存|任务|报警|计划' "$1"|awk -F# '{print $2}'|sort|uniq -c|grep --color=always -E 'waiting|推送|数据|上传|缓存|任务|报警|计划' && grep  '\[E\]' "$1"|awk -F# '{print $2}'|sort|uniq -c|GREP_COLOR='01;33' grep --color=always -E .)
+    [ -f "$1" ] && (echo '日志统计' $1|GREP_COLOR='01;32' grep --color=always . && grep -E 'waiting|推送|数据|上传|缓存|任务|报警|计划|\[设备\]' "$1"|awk -F# '{print $2}'|sort|uniq -c|grep --color=always -E 'waiting|推送|数据|上传|缓存|任务|报警|计划|\[设备\]' && grep  '\[E\]' "$1"|awk -F# '{print $2}'|sort|uniq -c|GREP_COLOR='01;33' grep --color=always -E .)
+
+    [ "$1" == "-la" ] && (ls /d/log/*.rg.log|while read line; do $0 -a $line;done)
+    [ "$1" == "-a" ] && (echo '日志统计' $2|GREP_COLOR='01;32' grep --color=always . && awk -F# '{print $2}' $2|sort|uniq -c) && exit 
+    [ "$1" == "-lj" ] && (ls /d/log/*.rg.log|while read line; do $0 -j $line;done)
+    [ "$1" == "-j" ] && (echo '可视化统计[json]' $2'.json'|GREP_COLOR='01;32' grep --color=always . && echo '[' > $2'.json'&& grep '#' $2|grep -v 'Log file created'|awk -F# '{print $1"#"$2}'| sed 's/\t//g;s/\\/\\\\/g;s/\]\[/#/g;s/^\[//g;s/\]#/#/g;s#{.*$##g'|awk -F# '{print "{\"time\":\""$1"\",\"level\":\"" $2"\",\"module\":\"" $3"\",\"info\":\"" $4"\"},"}'|sed 's/ [^ "]*//'|sed '$s/,$//g' >> $2''.json && echo ']' >> $2''.json) && exit 
     
     [ "$1" == "-ll" ] && (echo '监测日志统计'|grep --color=always . && loop -l)
-    [ "$1" == "-ls" ] && (echo '监测处理速度' "count/min(SMsgVATaskEndNotify)"|grep --color=always . && loop --stat)
     [ "$1" == "-le" ] && (echo '监测日志错误' | grep --color=always . && loop -e)
+    [ "$1" == "-ls" ] && (echo '监测处理速度' "count/min(SMsgVATaskEndNotify)"|grep --color=always . && loop --stat)
     [ "$1" == "-cc" ] && (echo '显示克隆信息' | grep --color=always . && mkshow)
-    
+    [ "$1" == "-vv" ] && (echo '当前安装版本:analyseServer['$(reg query "HKLM\SOFTWARE\Inforun\analyseServer"|grep Version|awk '{print $3}')"]" | grep --color=always .)
+
+    [ "$1" == "-v" ] && version
+    [ "$1" == "-t" ] && ($0 -s && $0 -m && echo "启动tomcat"| grep --color=always . && $TOMCAT)
+    [ "$1" == "-i" ] && (echo '卸载并安装['$MSI_DIR"/"$MSI_FILE']'| grep --color=always . && (msiexec.exe -q -x $(reg query "HKLM\SOFTWARE\Inforun\analyseServer"|grep ProductCode|awk '{print $3}') &> /dev/null );(cd $MSI_DIR && msiexec.exe -q -i $MSI_FILE) ;$0 -k -c -r -p)
+    [ "$1" == "-x" ] && [ $# == 2 ] && (echo '过滤:' $2| grep --color=always . && WORD=$(echo $2|sed 's/\[/\\\[/g;s/\]/\\\]/g;s/\+/\\\+/g') && (for line in /d/log/*.rg.log; do echo $line|grep --color=always .;grep --color=always -E ''"$WORD"'' $line|awk -F# '{print $2}'|sort|uniq -c;done;))
+
     [ "$1" == "-l" ] && ($0 /d/log/*.rg.log)
     [ "$1" == "--stat" ] && (for line in /d/log/*.rg.log; do echo -e $line|grep --color=always . ;time=$(grep -E '消息 处理\[任务\]\[struct SMsgVATaskEndNotify' $line|sed -n '1p;$p'|sed 's/\]\[.*$//g;s/\[//g'|xargs.exe -i date --date='{}' +%s|tr "\n" "-"|sed 's/^/(0-(/;s#-$#))#;s/$/\n/'|bc);count=$(grep -cE '消息 处理\[任务\]\[struct SMsgVATaskEndNotify' $line);speed=$(echo "("$count"-1)*60/"$time|bc);echo "("$count"-1)*60/"$time"="$speed;done;)
     [ "$1" == "-e" ] && (grep --color=always -n '\[E\]' /d/log/*.rg.log|awk -F[#:] '{print $1"#"$6}'|sort|uniq -c| GREP_COLOR='01;32' grep --color=always '#.*';)
-    [ "$1" == "-a" ] && ($0 -k -i -c -r -p)
-    [ "$1" == "-r" ] && ($0 -1; echo '等待启动 5 sec'|grep --color=always . && sleep 5; $0 -2)
-    [ "$1" == "-h" ] && (echo '挂载信息' | grep --color=always . && df -h && usage)
-    [ "$1" == "-n" ] && ([ $# == 2 ] && notify $2 && exit || notify 222 && exit)
-    [ "$1" == "-m" ] && modconfig
-    [ "$1" == "-p" ] && print_info
+    [ "$1" == "-n" ] && ([ $# == 2 ] && notify $2 || notify 222)
+    [ "$1" == "-nn" ] && (for line in 222 231 232 230;do echo "$0 -n $line";date;$0 -n $line;sleep 20;done)
+    [ "$1" == "-m" ] && ([ $# == 2 ] && modconfig $2 || modconfig 0)
+    [ "$1" == "-h" ] && usage
     [ "$1" == "-V" ] && (echo -e 'rock' $VERSION | GREP_COLOR='01;36' grep --color=always .)
-    [ "$1" == "-v" ] && version
+    [ "$1" == "-p" ] && print_info
 
     [ "$1" == "-s" ] && (echo '停止tomcat' | grep --color=always . && eval $(tasklist.exe |grep -ia 'java.exe'|awk '{print "-PID "$2}'|tr "\n" " " |xargs.exe -i echo {}|sed 's/^/taskkill -F /'))
-    [ "$1" == "-t" ] && (echo "启动tomcat"| grep --color=always . && $TOMCAT) && (echo "等待tomcat完全启动("$sleep_time" sec)"| grep --color=always . && sleep $sleep_time )
-    [ "$1" == "-k" ] && (echo '杀死进程[vaServer64 & analyserServer64]'| grep --color=always . && eval $(tasklist.exe |grep -ia er64.exe|awk '{print "-PID "$2}'|tr "\n" " " |xargs.exe -i echo {}|sed 's/^/taskkill -F /'))
-    [ "$1" == "-i" ] && (echo '卸载并安装['$MSI_DIR"/"$MSI_FILE']'| grep --color=always . && (msiexec.exe -q -x $(reg query "HKLM\SOFTWARE\Inforun\analyseServer"|grep ProductCode|awk '{print $3}') &> /dev/null );(cd $MSI_DIR && msiexec.exe -q -i $MSI_FILE) )
+    [ "$1" == "-k" ] &&  $0 -k1 -k2
+    [ "$1" == "-k1" ] && (echo '杀死进程[vaServer64]'| grep --color=always . && eval $(tasklist.exe |grep -ia vaServer64.exe|awk '{print "-PID "$2}'|tr "\n" " " |xargs.exe -i echo {}|sed 's/^/taskkill -F /'))
+    [ "$1" == "-k2" ] && (echo '杀死进程[analyserServer64]'| grep --color=always . && eval $(tasklist.exe |grep -ia analyseServer64.exe|awk '{print "-PID "$2}'|tr "\n" " " |xargs.exe -i echo {}|sed 's/^/taskkill -F /'))
     [ "$1" == "-c" ] && (echo '克隆副本' | grep --color=always . && mkcopy)
+    [ "$1" == "-r" ] && ($0 -1; echo '等待启动 5 sec'|grep --color=always . && sleep 5; $0 -2)
     [ "$1" == "-1" ] && (echo '启动所有vaServer64' | grep --color=always . && eval $(find . -name 'vaServer64.exe'|sed 's#/[^/]*$##;s/\.//;s#^#(cd '\'"$CURR_DIR"\''#g;s#$# \&\& ./vaServer64.exe \&> /dev/null \&)#'|tr "\n" " "|sed 's#) (#) \&\& (#g') )
     [ "$1" == "-2" ] && (echo '启动所有analyserServer64' | grep --color=always . && eval $(find . -name 'analyseServer64.exe'|sed 's#/[^/]*$##;s/\.//;s#^#(cd '\'"$CURR_DIR"\''#g;s#$# \&\& ./analyseServer64.exe \&> /dev/null \&)#'|tr "\n" " "|sed 's#) (#) \&\& (#g'))
-
-    [ "$1" == "-x" ] && [ "$1" == "-x" ] && (echo '过滤:' $2| grep --color=always . && WORD=$(echo $2|sed 's/\[/\\\[/g;s/\]/\\\]/g') && (for line in /d/log/*.rg.log; do echo $line|grep --color=always .;grep --color=always -E ''"$WORD"'' $line|awk -F# '{print $2}'|sort|uniq -c;done;))
 
     shift
 done
