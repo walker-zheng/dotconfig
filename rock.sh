@@ -177,6 +177,7 @@ do
     [ "$1" == "-n" ] && ([ $# == 2 ] && notify $2 || notify 222)
     [ "$1" == "-nn" ] && (for line in 222 231 232 230;do echo "$0 -n $line";date;$0 -n $line;sleep 20;done)
     [ "$1" == "-m" ] && ([ $# == 2 ] && modconfig $2 || modconfig 0)
+    [ "$1" == "-mm" ] && (modconfig 1 && modconfig 2 && modconfig 3 && modconfig 4 && modconfig 5)
     [ "$1" == "-h" ] && usage
     [ "$1" == "-V" ] && (echo -e 'rock' $VERSION | GREP_COLOR='01;36' grep --color=always .)
     [ "$1" == "-p" ] && print_info

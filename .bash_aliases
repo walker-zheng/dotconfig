@@ -67,6 +67,9 @@ shopt -s histappend
 shopt -s cmdhist
 shopt -s nocaseglob # 补全不区分大小写
 
+export CPATH=/e/zmy/workspace/git/vcpkg/installed/x64-windows/include
+export LD_LIBRARY_PATH=/e/zmy/workspace/git/vcpkg/installed/x64-windows/lib
+
 export TMUX_TMPDIR=~/.tmux
 #	export BOOST_DLL="/cygdrive/e/workspace/boost_1_55_0/stage/lib"
 #   export EBOOK_DIR="/d/tools/go"
