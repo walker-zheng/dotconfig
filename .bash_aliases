@@ -11,8 +11,8 @@ if [[ "Cygwin" == "$SYS" ]]; then
         . /d/msys64/usr/share/git/completion/git-prompt.sh
     fi
 elif [[ "Msys" == "$SYS" ]]; then
-    alias src="cd /e/zmy/analyseServer/analyseServer/analyseServer/"
-    alias we="cd /e/zmy/workspace"
+    alias src="cd /d/workspace/analyseServer/analyseServer/analyseServer/"
+    alias we="cd /d/workspace"
     alias wiki="cd /e/zmy/publish/wiki"
     alias apm="/c/Users/sh/AppData/Local/atom/bin/apm"
     export MSYS="winsymlinks:lnk"
