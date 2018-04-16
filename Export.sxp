@@ -9,9 +9,6 @@ exclude=true
 </APP>
 
 <APP name="Default">
-exec=Taskmgr.exe
-exec=XiuXiu.exe
-exec=WINWORD.EXE
 exit {
    gesture = \ Down - \ Up
    新建命令 = sicontrol, quit
@@ -54,7 +51,7 @@ setting {
 }
 窗口:刷新 [←→] {
    gesture = Left-Right
-   F5 = keys, hotkey  "[F5]"
+   F5 = keys, hotkey "[F5]"
 }
 窗口:下翻[→↓] {
    gesture = Right-Down
@@ -70,23 +67,23 @@ setting {
 }
 窗口切换 [↓↓] {
    gesture = WHEEL_DOWN
-   Win+M = keys, keys  "[CTRL_DOWN][ALT_DOWN][TAB_DOWN][TAB_UP][ALT_UP][CTRL_UP]"
+   Win+M = keys, keys "[CTRL_DOWN][ALT_DOWN][TAB_DOWN][TAB_UP][ALT_UP][CTRL_UP]"
 }
 窗口选择[↑↑] {
    gesture = WHEEL_UP
-   Win+M = keys, keys  "[WIN_DOWN][TAB_DOWN][TAB_UP][WIN_UP]"
+   Win+M = keys, keys "[WIN_DOWN][TAB_DOWN][TAB_UP][WIN_UP]"
 }
 历史:后退[←] {
    gesture = Left
-   M- = keys, hotkey  "[ALT_DOWN][LEFT][ALT_UP]"
+   M- = keys, hotkey "[ALT_DOWN][LEFT][ALT_UP]"
 }
 历史:前进[[→] {
    gesture = Right
-   M- = keys, hotkey  "[ALT_DOWN][RIGHT][ALT_UP]"
+   M- = keys, hotkey "[ALT_DOWN][RIGHT][ALT_UP]"
 }
 历史:上层[↑] {
    gesture = Up
-   M- = keys, hotkey  "[ALT_DOWN][UP][ALT_UP]"
+   M- = keys, hotkey "[ALT_DOWN][UP][ALT_UP]"
 }
 桌面:显示 [↙↗] {
    gesture = / Down - / Up
@@ -112,11 +109,11 @@ exec=firefox.exe
 class=MozillaWindowClass
 标签:撤销[↑] {
    gesture = Up
-   PRIOR = keys, hotkey  "[CTRL_DOWN][SHIFT_DOWN]t[SHIFT_UP][CTRL_UP]"
+   PRIOR = keys, hotkey "[CTRL_DOWN][SHIFT_DOWN]t[SHIFT_UP][CTRL_UP]"
 }
 刷新 [←→] {
    gesture = Left-Right
-   F5 = keys, hotkey  "[CTRL_DOWN][F5][CTRL_UP]"
+   F5 = keys, hotkey "[CTRL_DOWN][F5][CTRL_UP]"
 }
 </APP>
 
@@ -141,11 +138,11 @@ exec=Decoda.exe
 exec=pycharm64.exe
 标签:关闭↓ {
    gesture = Down
-   PRIOR = keys, hotkey  "[CTRL_DOWN][F4][CTRL_UP]"
+   PRIOR = keys, hotkey "[CTRL_DOWN][F4][CTRL_UP]"
 }
 窗口:向上[↑] {
    gesture = Up
-   M- = keys, hotkey  "[F12]"
+   M- = keys, hotkey "[F12]"
 }
 </APP>
 
@@ -153,11 +150,11 @@ exec=pycharm64.exe
 exec=notepad++.exe
 历史:后退[←] {
    gesture = Left
-   M- = keys, hotkey  "[CTRL_DOWN]-[CTRL_UP]"
+   M- = keys, hotkey "[CTRL_DOWN]-[CTRL_UP]"
 }
 历史:前进[[→] {
    gesture = Right
-   M- = keys, hotkey  "[CTRL_DOWN][SHIFT_DOWN]-[SHIFT_UP][CTRL_UP]"
+   M- = keys, hotkey "[CTRL_DOWN][SHIFT_DOWN]-[SHIFT_UP][CTRL_UP]"
 }
 </APP>
 
