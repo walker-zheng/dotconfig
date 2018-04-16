@@ -1,119 +1,146 @@
 <VERSION>StrokeIt .9.4</VERSION>
 
 <APP name="[禁用手势的程序]">
-exec=dota.exe
-exec=war3.exe
 exec=TslGame.exe
 exec=dota2.exe
 exclude=true
 </APP>
 
 <APP name="Default">
-exit {
-   gesture = \ Down - \ Up
-   新建命令 = sicontrol, quit
-}
-f11 {
-   gesture = Left-Right-Left
-   新建命令 = keys, hotkey "[F11]"
-}
-setting {
-   gesture = Right-Left-Right
-   新建命令 = sicontrol, show
-}
-标签:关闭[↓] {
-   gesture = Down
-   C+w = keys, hotkey "[CTRL_DOWN]w[CTRL_UP]"
-}
-标签:向后[↑→] {
-   gesture = Up-Right
-   C-TAB = keys, hotkey "[CTRL_DOWN][TAB][CTRL_UP]"
-}
-标签:向前[↑←] {
-   gesture = Up-Left
-   C-S-TAB = keys, hotkey "[CTRL_DOWN][SHIFT_DOWN][TAB][SHIFT_UP][CTRL_UP]"
-}
-窗口:到底[←↓] {
-   gesture = Left-Down
-   END = keys, hotkey "[CTRL_DOWN][END][CTRL_UP]"
-}
-窗口:到顶[←↑] {
-   gesture = Left-Up
-   HOME = keys, hotkey "[CTRL_DOWN][HOME][CTRL_UP]"
-}
-窗口:关闭[↓→] {
-   gesture = Down-Right
-   ALT + F4 = keys, hotkey "[ALT_DOWN][F4][ALT_UP]"
-}
-窗口:上翻[→↑] {
-   gesture = Right-Up
-   pageup = keys, hotkey "[PRIOR]"
-}
-窗口:刷新 [←→] {
-   gesture = Left-Right
-   F5 = keys, hotkey "[F5]"
-}
-窗口:下翻[→↓] {
-   gesture = Right-Down
-   pagedown = keys, hotkey "[NEXT]"
-}
-窗口:最大化/还原 [↗] {
-   gesture = / Up
-   最大化/还原 = win, max_rest
-}
-窗口:最小化 [↙] {
-   gesture = / Down
-   最小化 = win, min
-}
-窗口切换 [↓↓] {
-   gesture = WHEEL_DOWN
-   Win+M = keys, keys "[CTRL_DOWN][ALT_DOWN][TAB_DOWN][TAB_UP][ALT_UP][CTRL_UP]"
-}
-窗口选择[↑↑] {
+    [↑↑]窗口选择 {
    gesture = WHEEL_UP
    Win+M = keys, keys "[WIN_DOWN][TAB_DOWN][TAB_UP][WIN_UP]"
 }
-历史:后退[←] {
-   gesture = Left
-   M- = keys, hotkey "[ALT_DOWN][LEFT][ALT_UP]"
+    [↓↓]窗口切换 {
+   gesture = WHEEL_DOWN
+   Win+M = keys, keys "[CTRL_DOWN][ALT_DOWN][TAB_DOWN][TAB_UP][ALT_UP][CTRL_UP]"
 }
-历史:前进[[→] {
-   gesture = Right
-   M- = keys, hotkey "[ALT_DOWN][RIGHT][ALT_UP]"
+   [↗]窗口:最大化/还原 {
+   gesture = / Up
+   最大化/还原 = win, max_rest
 }
-历史:上层[↑] {
+   [↘] {
+   gesture = \ Down
+}
+   [↙]窗口:最小化 {
+   gesture = / Down
+   最小化 = win, min
+}
+   [↖] {
+   gesture = \ Up
+}
+  [↑]历史:上层 {
    gesture = Up
    M- = keys, hotkey "[ALT_DOWN][UP][ALT_UP]"
 }
-桌面:显示 [↙↗] {
+  [→]历史:前进 {
+   gesture = Right
+   M- = keys, hotkey "[ALT_DOWN][RIGHT][ALT_UP]"
+}
+  [↓]标签:关闭 {
+   gesture = Down
+   C+w = keys, hotkey "[CTRL_DOWN]w[CTRL_UP]"
+}
+  [←]历史:后退 {
+   gesture = Left
+   M- = keys, hotkey "[ALT_DOWN][LEFT][ALT_UP]"
+}
+ [↗↙]窗口:全屏 {
+   gesture = / Up - / Down
+   新建命令 = keys, hotkey "[F11]"
+}
+ [↘↖]setting {
+   gesture = \ Down - \ Up
+   新建命令 = sicontrol, show
+}
+ [↙↗]桌面:显示 {
    gesture = / Down - / Up
    W+d = keys, keys "[win_down]d[win_up]"
+}
+ [↖↘]exit {
+   gesture = \ Up - \ Down
+   新建命令 = sicontrol, quit
+}
+[↑→]标签:向后 {
+   gesture = Up-Right
+   C-TAB = keys, hotkey "[CTRL_DOWN][TAB][CTRL_UP]"
+}
+[↑↓] {
+   gesture = Up-Down
+}
+[↑←]标签:向前 {
+   gesture = Up-Left
+   C-S-TAB = keys, hotkey "[CTRL_DOWN][SHIFT_DOWN][TAB][SHIFT_UP][CTRL_UP]"
+}
+[→↑]窗口:上翻 {
+   gesture = Right-Up
+   pageup = keys, hotkey "[PRIOR]"
+}
+[→↓]窗口:下翻 {
+   gesture = Right-Down
+   pagedown = keys, hotkey "[NEXT]"
+}
+[→←] {
+   gesture = Right-Left
+}
+[↓↑] {
+   gesture = Down-Up
+}
+[↓→]窗口:关闭 {
+   gesture = Down-Right
+   ALT + F4 = keys, hotkey  "[ALT_DOWN][F4][ALT_UP]"
+}
+[↓←] {
+   gesture = Down-Left
+}
+[←↑]窗口:到顶 {
+   gesture = Left-Up
+   HOME = keys, hotkey "[CTRL_DOWN][HOME][CTRL_UP]"
+}
+[←→]窗口:刷新 {
+   gesture = Left-Right
+   F5 = keys, hotkey  "[F5]"
+}
+[←↓]窗口:到底 {
+   gesture = Left-Down
+   END = keys, hotkey  "[ESCAPE]"
+}
+_[↑↓↑] {
+   gesture = Up-Down-Up
+}
+_[→←→] {
+   gesture = Right-Left-Right
+}
+_[↓↑↓] {
+   gesture = Down-Up-Down
+}
+_[←→←] {
+   gesture = Left-Right-Left
 }
 </APP>
 
 <APP name="7zip">
 exec=7zFM.exe
-历史[←] {
-   gesture = Left
-   PRIOR = keys, hotkey "[ALT_DOWN][F12][ALT_UP]"
-}
-向上[↑] {
+[↑]向上 {
    gesture = Up
    PRIOR = keys, hotkey "[BACK]"
+}
+[←]历史 {
+   gesture = Left
+   PRIOR = keys, hotkey "[ALT_DOWN][F12][ALT_UP]"
 }
 </APP>
 
 <APP name="browser">
 exec=chrome.exe
 exec=firefox.exe
-class=MozillaWindowClass
-标签:撤销[↑] {
+[↑]标签:撤销 {
    gesture = Up
    PRIOR = keys, hotkey "[CTRL_DOWN][SHIFT_DOWN]t[SHIFT_UP][CTRL_UP]"
 }
-刷新 [←→] {
+[←→]刷新 {
    gesture = Left-Right
-   F5 = keys, hotkey "[CTRL_DOWN][F5][CTRL_UP]"
+   F5 = keys, hotkey  "[CTRL_DOWN][F5][CTRL_UP]"
 }
 </APP>
 
@@ -122,11 +149,11 @@ exec=sublime_text.exe
 exec=atom.exe
 exec=notepad++.exe
 exec=Code.exe
-标签:撤销[↑] {
+[↑]标签:撤销 {
    gesture = Up
    PRIOR = keys, hotkey "[CTRL_DOWN][SHIFT_DOWN]t[SHIFT_UP][CTRL_UP]"
 }
-标签:关闭↓ {
+[↓]标签:关闭 {
    gesture = Down
    PRIOR = keys, hotkey "[CTRL_DOWN]w[CTRL_UP]"
 }
@@ -134,27 +161,26 @@ exec=Code.exe
 
 <APP name="ide">
 exec=devenv.exe
-exec=Decoda.exe
 exec=pycharm64.exe
-标签:关闭↓ {
-   gesture = Down
-   PRIOR = keys, hotkey "[CTRL_DOWN][F4][CTRL_UP]"
-}
-窗口:向上[↑] {
+[↑]窗口:向上 {
    gesture = Up
    M- = keys, hotkey "[F12]"
+}
+[↓]标签:关闭 {
+   gesture = Down
+   PRIOR = keys, hotkey "[CTRL_DOWN][F4][CTRL_UP]"
 }
 </APP>
 
 <APP name="npp">
 exec=notepad++.exe
-历史:后退[←] {
-   gesture = Left
-   M- = keys, hotkey "[CTRL_DOWN]-[CTRL_UP]"
-}
-历史:前进[[→] {
+[→]历史:前进 {
    gesture = Right
    M- = keys, hotkey "[CTRL_DOWN][SHIFT_DOWN]-[SHIFT_UP][CTRL_UP]"
+}
+[←]历史:后退 {
+   gesture = Left
+   M- = keys, hotkey "[CTRL_DOWN]-[CTRL_UP]"
 }
 </APP>
 
