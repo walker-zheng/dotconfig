@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-SYS=`uname -s`
+SYS=`uname -o`
 if [[ "Cygwin" == "$SYS" ]]; then
     mount -c /
     alias src="cd /e/zmy/analyseServer/analyseServer/analyseServer/"
