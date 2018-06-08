@@ -27,6 +27,8 @@ elif [[ "Msys" == "$SYS" ]]; then
     if [[ -f /e/zmy/workspace/git/git-flow-completion/git-flow-completion.bash ]]; then
         . /e/zmy/workspace/git/git-flow-completion/git-flow-completion.bash
     fi
+    export CPATH=/e/zmy/workspace/git/vcpkg/installed/x64-windows/include
+    export LD_LIBRARY_PATH=/e/zmy/workspace/git/vcpkg/installed/x64-windows/lib
 elif [[ "Linux" == "$SYS" ]];then
     alias we="cd /home/workspace"
 fi
@@ -67,10 +69,8 @@ shopt -s histappend
 shopt -s cmdhist
 shopt -s nocaseglob # 补全不区分大小写
 
-export CPATH=/e/zmy/workspace/git/vcpkg/installed/x64-windows/include
-export LD_LIBRARY_PATH=/e/zmy/workspace/git/vcpkg/installed/x64-windows/lib
 
-export TMUX_TMPDIR=~/.tmux
+#   export TMUX_TMPDIR=~/.tmux
 #	export BOOST_DLL="/cygdrive/e/workspace/boost_1_55_0/stage/lib"
 #   export EBOOK_DIR="/d/tools/go"
 #   export PATH=$PATH:$EBOOK_DIR
@@ -109,13 +109,13 @@ PS1='\[\e]0;\w\a\]\[\033[01;32m\]\u@\h\[\033[01;31m\][$SYS_NAME]\[\033[00m\]:\[\
 #   export http_proxy="http://192.168.9.195:808"
 #   export https_proxy="http://192.168.9.195:808"
 
-export TERM=xterm-color
-# export LC_ALL='C'
-export LANG=zh_CN.UTF-8
-export STARDICT_DATA_DIR='/usr/share/stardict/dic'
-export SDCV_HISTSIZE=1000
+#   export TERM=xterm-color
+#   export LC_ALL='C'
+#   export LANG=zh_CN.UTF-8
+#   export STARDICT_DATA_DIR='/usr/share/stardict/dic'
+#   export SDCV_HISTSIZE=1000
 #   export LOCATE_PATH=/var/locatedb
-export PS1
+#   export PS1
 
 # 快速启动emacs client
 # alias er='emacsclient -s server -t -a ""'
