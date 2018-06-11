@@ -1,4 +1,3 @@
-SYS_=$(uname -s)
 if [[ "Msys" == "$SYS_" ]]; then
     if [[ -f /usr/share/git/completion/git-prompt.sh ]]; then
         . /usr/share/git/completion/git-prompt.sh
@@ -56,8 +55,7 @@ shopt -s checkhash
 shopt -u sourcepath
 
 # source /etc/bash_completion.d/git
-SYS_NAME=`uname -s|sed 's#_.*##g;s#[A-Z]#\l&#g'`
-PS1='\[\e]0;\w\a\]\[\033[01;32m\]\u@\h\[\033[01;31m\][$SYS_NAME]\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\[\033[01;35m\]$(__git_ps1 "(%s)")\[\033[00m\] \$ '
+PS1='\[\e]0;\w\a\]\[\033[01;32m\]\u@\h\[\033[01;31m\]\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\[\033[01;35m\]$(__git_ps1 "(%s)")\[\033[00m\] \$ '
 
 export TERM=xterm-color
 # export LC_ALL='C'

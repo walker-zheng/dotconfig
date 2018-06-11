@@ -27,11 +27,11 @@
     unstage = reset HEAD
     uncommit = reset --soft HEAD^
 [diff]
-    tool = vsdiffmerge
+    #tool = vsdiffmerge
 [difftool]
     prompt = true
 [difftool "vsdiffmerge"]
-    cmd = \"C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\Common7\\IDE\\vsdiffmerge.exe\" \"$LOCAL\" \"$REMOTE\" //t
+    #cmd = \"C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\Common7\\IDE\\vsdiffmerge.exe\" \"$LOCAL\" \"$REMOTE\" //t
 [difftool "vsdiffmerge"]
     keepbackup = false
 [merge]
@@ -50,6 +50,7 @@
 [i18n]
     commitencoding = utf-8
 [core]
+    editor = vim
     quotepath = false
     autocrlf = true
     filemode = false
