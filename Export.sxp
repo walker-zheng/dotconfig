@@ -7,70 +7,37 @@ exclude=true
 </APP>
 
 <APP name="Default">
-    [¡ü¡ü]´°¿ÚÑ¡Ôñ {
-   gesture = WHEEL_UP
-   Win+M = keys, keys "[WIN_DOWN][TAB_DOWN][TAB_UP][WIN_UP]"
-}
-    [¡ı¡ı]´°¿ÚÇĞ»» {
-   gesture = WHEEL_DOWN
-   Win+M = keys, keys "[CTRL_DOWN][ALT_DOWN][TAB_DOWN][TAB_UP][ALT_UP][CTRL_UP]"
-}
-   [¨J]´°¿Ú:×î´ó»¯/»¹Ô­ {
-   gesture = / Up
-   ×î´ó»¯/»¹Ô­ = win, max_rest
-}
-   [¨K] {
-   gesture = \ Down
-}
-   [¨L]´°¿Ú:×îĞ¡»¯ {
-   gesture = / Down
-   ×îĞ¡»¯ = win, min
-}
-   [¨I] {
-   gesture = \ Up
-}
-  [¡ü]ÀúÊ·:ÉÏ²ã {
+[¡ü]ÀúÊ·:ÉÏ²ã {
    gesture = Up
    M- = keys, hotkey "[ALT_DOWN][UP][ALT_UP]"
 }
-  [¡ú]ÀúÊ·:Ç°½ø {
-   gesture = Right
-   M- = keys, hotkey "[ALT_DOWN][RIGHT][ALT_UP]"
-}
-  [¡ı]±êÇ©:¹Ø±Õ {
-   gesture = Down
-   C+w = keys, hotkey "[CTRL_DOWN]w[CTRL_UP]"
-}
-  [¡û]ÀúÊ·:ºóÍË {
-   gesture = Left
-   M- = keys, hotkey "[ALT_DOWN][LEFT][ALT_UP]"
-}
- [¨J¨L]´°¿Ú:È«ÆÁ {
-   gesture = / Up - / Down
-   ĞÂ½¨ÃüÁî = keys, hotkey "[F11]"
-}
- [¨K¨I]setting {
-   gesture = \ Down - \ Up
-   ĞÂ½¨ÃüÁî = sicontrol, show
-}
- [¨L¨J]×ÀÃæ:ÏÔÊ¾ {
-   gesture = / Down - / Up
-   W+d = keys, keys "[win_down]d[win_up]"
-}
- [¨I¨K]exit {
-   gesture = \ Up - \ Down
-   ĞÂ½¨ÃüÁî = sicontrol, quit
+[¡ü¡ü]´°¿ÚÑ¡Ôñ {
+   gesture = WHEEL_UP
+   Win+M = keys, keys "[WIN_DOWN][TAB_DOWN][TAB_UP][WIN_UP]"
 }
 [¡ü¡ú]±êÇ©:Ïòºó {
    gesture = Up-Right
    C-TAB = keys, hotkey "[CTRL_DOWN][TAB][CTRL_UP]"
 }
-[¡ü¡ı] {
+[¡ü¡ı]´°¿Ú:Ë¢ĞÂ {
    gesture = Up-Down
+   pagedown = keys, hotkey  "[CTRL_DOWN][F5][CTRL_UP]"
 }
 [¡ü¡û]±êÇ©:ÏòÇ° {
    gesture = Up-Left
    C-S-TAB = keys, hotkey "[CTRL_DOWN][SHIFT_DOWN][TAB][SHIFT_UP][CTRL_UP]"
+}
+[¨J]´°¿Ú:×î´ó»¯/»¹Ô­ {
+   gesture = / Up
+   ×î´ó»¯/»¹Ô­ = win, max_rest
+}
+[¨J¨L]´°¿Ú:È«ÆÁ {
+   gesture = / Up - / Down
+   ĞÂ½¨ÃüÁî = keys, hotkey "[F11]"
+}
+[¡ú]ÀúÊ·:Ç°½ø {
+   gesture = Right
+   M- = keys, hotkey "[ALT_DOWN][RIGHT][ALT_UP]"
 }
 [¡ú¡ü]´°¿Ú:ÉÏ·­ {
    gesture = Right-Up
@@ -78,32 +45,68 @@ exclude=true
 }
 [¡ú¡ı]´°¿Ú:ÏÂ·­ {
    gesture = Right-Down
-   pagedown = keys, hotkey "[NEXT]"
+   pagedown = keys, hotkey  "[NEXT]"
 }
-[¡ú¡û] {
+[¡ú¡û]´°¿Ú:ÓÒÒÆ {
    gesture = Right-Left
+   pagedown = keys, hotkey  "[WIN_DOWN][RIGHT][WIN_UP]"
 }
-[¡ı¡ü] {
+[¨K] {
+   gesture = \ Down
+}
+[¨K¨I]setting {
+   gesture = \ Down - \ Up
+   ĞÂ½¨ÃüÁî = sicontrol, show
+}
+[¡ı]±êÇ©:¹Ø±Õ {
+   gesture = Down
+   C+w = keys, hotkey "[CTRL_DOWN]w[CTRL_UP]"
+}
+[¡ı¡ü]´°¿Ú:ÏÂÒÆ {
    gesture = Down-Up
+   pagedown = keys, hotkey  "[WIN_DOWN][DOWN][WIN_UP]"
 }
 [¡ı¡ú]´°¿Ú:¹Ø±Õ {
    gesture = Down-Right
-   ALT + F4 = keys, hotkey  "[ALT_DOWN][F4][ALT_UP]"
+   ALT + F4 = keys, hotkey "[ALT_DOWN][F4][ALT_UP]"
+}
+[¡ı¡ı]´°¿ÚÇĞ»» {
+   gesture = WHEEL_DOWN
+   Win+M = keys, keys "[CTRL_DOWN][ALT_DOWN][TAB_DOWN][TAB_UP][ALT_UP][CTRL_UP]"
 }
 [¡ı¡û] {
    gesture = Down-Left
+}
+[¨L]´°¿Ú:×îĞ¡»¯ {
+   gesture = / Down
+   ×îĞ¡»¯ = win, min
+}
+[¨L¨J]×ÀÃæ:ÏÔÊ¾ {
+   gesture = / Down - / Up
+   W+d = keys, keys "[win_down]d[win_up]"
+}
+[¡û]ÀúÊ·:ºóÍË {
+   gesture = Left
+   M- = keys, hotkey "[ALT_DOWN][LEFT][ALT_UP]"
 }
 [¡û¡ü]´°¿Ú:µ½¶¥ {
    gesture = Left-Up
    HOME = keys, hotkey "[CTRL_DOWN][HOME][CTRL_UP]"
 }
-[¡û¡ú]´°¿Ú:Ë¢ĞÂ {
+[¡û¡ú]´°¿Ú:×óÒÆ {
    gesture = Left-Right
-   F5 = keys, hotkey  "[F5]"
+   pagedown = keys, hotkey  "[WIN_DOWN][LEFT][WIN_UP]"
 }
 [¡û¡ı]´°¿Ú:µ½µ× {
    gesture = Left-Down
-   END = keys, hotkey  "[ESCAPE]"
+   END = keys, hotkey "[ESCAPE]"
+}
+[¨I] {
+   gesture = \ Up
+}
+[¨I¨K]exit {
+   gesture = \ Up - \ Down
+   ĞÂ½¨ÃüÁî = sicontrol, quit
 }
 _[¡ü¡ı¡ü] {
    gesture = Up-Down-Up
@@ -137,10 +140,6 @@ exec=firefox.exe
 [¡ü]±êÇ©:³·Ïú {
    gesture = Up
    PRIOR = keys, hotkey "[CTRL_DOWN][SHIFT_DOWN]t[SHIFT_UP][CTRL_UP]"
-}
-[¡û¡ú]Ë¢ĞÂ {
-   gesture = Left-Right
-   F5 = keys, hotkey  "[CTRL_DOWN][F5][CTRL_UP]"
 }
 </APP>
 
@@ -235,7 +234,6 @@ t#
 }
 
 Up-Left {
-–!
 }
 
 Up-Down {
@@ -256,7 +254,6 @@ Down-Left {
 
 Down-Right {
 ‰
-†
 u0
 }
 
@@ -289,15 +286,12 @@ u5p
 }
 
 \ Down - \ Up {
-•
 }
 
 \ Up {
-•
 }
 
 \ Up - \ Down {
-•
 }
 
 1 {
@@ -320,14 +314,10 @@ special=-||E
 4 {
 eBi
 ei
-…‰
 …$V
 …`
-…$‰
 …0
 …5x`
-–$‰
-•$‰
 …2E
 }
 
@@ -351,17 +341,14 @@ $‰‡S
 2E˜B0
 $Y„ 
 2E˜E0
-$Y„#
 2H˜B
 $‰„#
 !Y„#
 2˜B0
 !Y„S
 &„S
-!Y„ 
 5˜B0
 2HE0
-2H˜E0
 2H˜E0
 2u0
 $Y„S 
@@ -397,9 +384,7 @@ $Y‡S
 !&‡S 
 !Y‡S 
 2˜E0
-$Y„!
 !Y‡R
-†!
 2˜u2
 %˜E2
 %˜E2
@@ -428,7 +413,6 @@ $u2
 9 {
 $Si
 2Bi
-!&
 2GSi
 2E6
 $&
@@ -489,7 +473,6 @@ t$Y€
 t$Y‡
 t$€
 t$‰‡
-t%˜
 t%˜p
 t&)‡
 t&TY€
@@ -510,11 +493,7 @@ u5˜p
 „#TY€
 „#Y€
 „#Y‡
-„$Y€
-„$Y‡
-„&TY€
 „&TY‡
-„&Y€
 t&%˜p
 t&&‡
 t#Q&‡
@@ -534,10 +513,8 @@ $‰
 }
 
 D {
-t&‡
 t&€
 t&W
-„&‡
 }
 
 E {
@@ -582,7 +559,6 @@ bx
 2Hx
 25x
 bex
-2GW‰
 $‰‡
 bbH
 55x
@@ -595,9 +571,7 @@ alias=Left-Down
 G {
 2He
 $†P
-2H˜
 $‰€
-2H•
 2H˜p
 2He@
 $†T
@@ -640,7 +614,6 @@ K {
 6„Y
 6„‰
 5t‰
-6„%
 5t&
 5u€
 $t
@@ -661,22 +634,14 @@ special=-1E
 N {
 t†0
 t–0
-t%–0
-t†0
-t
 AHc
-t…0
 t†0
 BYc
-t–
 u–0
 }
 
 O {
-$†0
-$† 
 2Hb
-$†!
 }
 
 P {
@@ -691,7 +656,6 @@ t&!
 t&P
 „#Q
 t&Q
-„&P
 t# 
 t#P
 t#$
@@ -703,24 +667,12 @@ Q {
 †!X
 †!€
 †$‰
-†%
 $S$€
 $†!P
 $†!X
 $†!Y
 $†!€
-$†!‰
-$†!
-$†$
 $†$p
-$†$€
-$†$‰
-$†$
-$†%
-$†%€
-$†%
-$†&
-$†)
 2Hb
 2Hb
 2Hb€
@@ -734,15 +686,10 @@ $†)
 2HbY
 2Hb`
 2Hb‰
-2Hb
-†%
 2Hb@
-†$€
 †!Y
-$†&
 2E2i
 $v!Y
-$†$Y
 2GS!Y
 bHbH
 bHbY
@@ -750,10 +697,8 @@ bHbY
 }
 
 R {
-t#T‰
 t#TY
 t$‰
-t&T‰
 t&Y
 t#T€
 BeH
@@ -762,7 +707,6 @@ t#Y
 t$Y
 t&W€
 t#!Y
-t#$‰
 „&TY
 t&(
 „&T€
@@ -770,22 +714,13 @@ t#$Y
 „#Y
 t#$€
 t&T€
-„&€
-„&Y
-t&‰
-„#T‰
-„$‰
 BeE
-„#TY
 t&$€
 B5
-„&‰
 t#$P
 t&QH
-t&W‰
 „#W‰
 Bex
-„&W‰
 t#W‰
 t&$‰
 t&QY
@@ -797,7 +732,6 @@ t&TY
 
 S {
 special=|3N
-!Y‡
 2Hp
 2Ehp
 }
@@ -807,9 +741,6 @@ alias=Right-Down
 }
 
 U {
-†0
-…0
-–0
 }
 
 V {
@@ -832,7 +763,6 @@ Y {
 6
 5p
 6
-6‡
 5€
 #W
 %6‡
@@ -853,14 +783,12 @@ Q&€
 Q&W
 Q#W
 Q&‡
-Q&
 Bi
 Q#X
 h
 ex
 ep
 !&W
-2h
 !&€
 }
 
@@ -927,7 +855,6 @@ special=!P
 
 S Reversed {
 special=|1N
-†!
 }
 
 T Reversed {
