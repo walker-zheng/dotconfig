@@ -9,7 +9,7 @@ exclude=true
 <APP name="Default">
 [¡ü]ÀúÊ·:ÉÏ²ã {
    gesture = Up
-   M- = keys, hotkey "[ALT_DOWN][UP][ALT_UP]"
+   M- = keys, hotkey [ALT_DOWN][UP][ALT_UP]
 }
 [¡ü¡ü]´°¿ÚÑ¡Ôñ {
    gesture = WHEEL_UP
@@ -17,15 +17,15 @@ exclude=true
 }
 [¡ü¡ú]±êÇ©:Ïòºó {
    gesture = Up-Right
-   C-TAB = keys, hotkey "[CTRL_DOWN][TAB][CTRL_UP]"
+   C-TAB = keys, hotkey [CTRL_DOWN][TAB][CTRL_UP]
 }
 [¡ü¡ı]´°¿Ú:Ë¢ĞÂ {
    gesture = Up-Down
-   pagedown = keys, hotkey  "[CTRL_DOWN][F5][CTRL_UP]"
+   pagedown = keys, hotkey [CTRL_DOWN][F5][CTRL_UP]
 }
 [¡ü¡û]±êÇ©:ÏòÇ° {
    gesture = Up-Left
-   C-S-TAB = keys, hotkey "[CTRL_DOWN][SHIFT_DOWN][TAB][SHIFT_UP][CTRL_UP]"
+   C-S-TAB = keys, hotkey [CTRL_DOWN][SHIFT_DOWN][TAB][SHIFT_UP][CTRL_UP]
 }
 [¨J]´°¿Ú:×î´ó»¯/»¹Ô­ {
    gesture = / Up
@@ -33,23 +33,23 @@ exclude=true
 }
 [¨J¨L]´°¿Ú:È«ÆÁ {
    gesture = / Up - / Down
-   ĞÂ½¨ÃüÁî = keys, hotkey "[F11]"
+   ĞÂ½¨ÃüÁî = keys, hotkey [F11]
 }
 [¡ú]ÀúÊ·:Ç°½ø {
    gesture = Right
-   M- = keys, hotkey "[ALT_DOWN][RIGHT][ALT_UP]"
+   M- = keys, hotkey [ALT_DOWN][RIGHT][ALT_UP]
 }
 [¡ú¡ü]´°¿Ú:ÉÏ·­ {
    gesture = Right-Up
-   pageup = keys, hotkey "[PRIOR]"
+   pageup = keys, hotkey [PRIOR]
 }
 [¡ú¡ı]´°¿Ú:ÏÂ·­ {
    gesture = Right-Down
-   pagedown = keys, hotkey  "[NEXT]"
+   pagedown = keys, hotkey [NEXT]
 }
 [¡ú¡û]´°¿Ú:ÓÒÒÆ {
    gesture = Right-Left
-   pagedown = keys, hotkey  "[WIN_DOWN][RIGHT][WIN_UP]"
+   pagedown = keys, hotkey [WIN_DOWN][RIGHT][WIN_UP]
 }
 [¨K] {
    gesture = \ Down
@@ -60,15 +60,15 @@ exclude=true
 }
 [¡ı]±êÇ©:¹Ø±Õ {
    gesture = Down
-   C+w = keys, hotkey "[CTRL_DOWN]w[CTRL_UP]"
+   C+w = keys, hotkey [CTRL_DOWN]W[CTRL_UP]
 }
 [¡ı¡ü]´°¿Ú:ÏÂÒÆ {
    gesture = Down-Up
-   pagedown = keys, hotkey  "[WIN_DOWN][DOWN][WIN_UP]"
+   pagedown = keys, hotkey [WIN_DOWN][DOWN][WIN_UP]
 }
 [¡ı¡ú]´°¿Ú:¹Ø±Õ {
    gesture = Down-Right
-   ALT + F4 = keys, hotkey "[ALT_DOWN][F4][ALT_UP]"
+   ALT + F4 = keys, hotkey [ALT_DOWN][F4][ALT_UP]
 }
 [¡ı¡ı]´°¿ÚÇĞ»» {
    gesture = WHEEL_DOWN
@@ -87,19 +87,19 @@ exclude=true
 }
 [¡û]ÀúÊ·:ºóÍË {
    gesture = Left
-   M- = keys, hotkey "[ALT_DOWN][LEFT][ALT_UP]"
+   M- = keys, hotkey [ALT_DOWN][LEFT][ALT_UP]
 }
 [¡û¡ü]´°¿Ú:µ½¶¥ {
    gesture = Left-Up
-   HOME = keys, hotkey "[CTRL_DOWN][HOME][CTRL_UP]"
+   HOME = keys, hotkey [HOME]
 }
 [¡û¡ú]´°¿Ú:×óÒÆ {
    gesture = Left-Right
-   pagedown = keys, hotkey  "[WIN_DOWN][LEFT][WIN_UP]"
+   pagedown = keys, hotkey [WIN_DOWN][LEFT][WIN_UP]
 }
 [¡û¡ı]´°¿Ú:µ½µ× {
    gesture = Left-Down
-   END = keys, hotkey "[ESCAPE]"
+   END = keys, hotkey [WIN_DOWN][DOWN][WIN_UP]
 }
 [¨I] {
    gesture = \ Up
@@ -108,29 +108,17 @@ exclude=true
    gesture = \ Up - \ Down
    ĞÂ½¨ÃüÁî = sicontrol, quit
 }
-_[¡ü¡ı¡ü] {
-   gesture = Up-Down-Up
-}
-_[¡ú¡û¡ú] {
-   gesture = Right-Left-Right
-}
-_[¡ı¡ü¡ı] {
-   gesture = Down-Up-Down
-}
-_[¡û¡ú¡û] {
-   gesture = Left-Right-Left
-}
 </APP>
 
 <APP name="7zip">
 exec=7zFM.exe
 [¡ü]ÏòÉÏ {
    gesture = Up
-   PRIOR = keys, hotkey "[BACK]"
+   PRIOR = keys, hotkey [BACK]
 }
 [¡û]ÀúÊ· {
    gesture = Left
-   PRIOR = keys, hotkey "[ALT_DOWN][F12][ALT_UP]"
+   PRIOR = keys, hotkey [ALT_DOWN][F12][ALT_UP]
 }
 </APP>
 
@@ -139,7 +127,7 @@ exec=chrome.exe
 exec=firefox.exe
 [¡ü]±êÇ©:³·Ïú {
    gesture = Up
-   PRIOR = keys, hotkey "[CTRL_DOWN][SHIFT_DOWN]t[SHIFT_UP][CTRL_UP]"
+   PRIOR = keys, hotkey [CTRL_DOWN][SHIFT_DOWN]T[SHIFT_UP][CTRL_UP]
 }
 </APP>
 
@@ -150,11 +138,11 @@ exec=notepad++.exe
 exec=Code.exe
 [¡ü]±êÇ©:³·Ïú {
    gesture = Up
-   PRIOR = keys, hotkey "[CTRL_DOWN][SHIFT_DOWN]t[SHIFT_UP][CTRL_UP]"
+   PRIOR = keys, hotkey [CTRL_DOWN][SHIFT_DOWN]T[SHIFT_UP][CTRL_UP]
 }
 [¡ı]±êÇ©:¹Ø±Õ {
    gesture = Down
-   PRIOR = keys, hotkey "[CTRL_DOWN]w[CTRL_UP]"
+   PRIOR = keys, hotkey [CTRL_DOWN]W[CTRL_UP]
 }
 </APP>
 
@@ -163,11 +151,11 @@ exec=devenv.exe
 exec=pycharm64.exe
 [¡ü]´°¿Ú:ÏòÉÏ {
    gesture = Up
-   M- = keys, hotkey "[F12]"
+   M- = keys, hotkey [F12]
 }
 [¡ı]±êÇ©:¹Ø±Õ {
    gesture = Down
-   PRIOR = keys, hotkey "[CTRL_DOWN][F4][CTRL_UP]"
+   PRIOR = keys, hotkey [CTRL_DOWN][F4][CTRL_UP]
 }
 </APP>
 
@@ -175,738 +163,11 @@ exec=pycharm64.exe
 exec=notepad++.exe
 [¡ú]ÀúÊ·:Ç°½ø {
    gesture = Right
-   M- = keys, hotkey "[CTRL_DOWN][SHIFT_DOWN]-[SHIFT_UP][CTRL_UP]"
+   M- = keys, hotkey [CTRL_DOWN][SHIFT_DOWN]-[SHIFT_UP][CTRL_UP]
 }
 [¡û]ÀúÊ·:ºóÍË {
    gesture = Left
-   M- = keys, hotkey "[CTRL_DOWN]-[CTRL_UP]"
+   M- = keys, hotkey [CTRL_DOWN]-[CTRL_UP]
 }
 </APP>
 
-<GESTURE>
-Right {
-E`
-}
-
-Right-Up {
-xc
-}
-
-Right-Down {
-i
-}
-
-Right-Left {
-Ee@
-hp
-}
-
-Right-Left-Right {
-EeE`
-}
-
-Left {
-e@
-}
-
-Left-Up {
-˜A
-}
-
-Left-Down {
-2G
-}
-
-Left-Right {
-eE`
-}
-
-Left-Right-Left {
-eEe@
-}
-
-Up {
-… 
-}
-
-Up-Right {
-t#
-}
-
-Up-Left {
-}
-
-Up-Down {
-…%€
-}
-
-Up-Down-Up {
-…%… 
-}
-
-Down {
-%€
-}
-
-Down-Left {
-6‡
-}
-
-Down-Right {
-‰
-u0
-}
-
-Down-Up {
-%… 
-}
-
-Down-Up-Down {
-%…%€
-}
-
-/ Up {
-u0
-}
-
-/ Up - / Down {
-u5p
-}
-
-/ Down {
-5p
-}
-
-/ Down - / Up {
-5u0
-}
-
-\ Down {
-
-}
-
-\ Down - \ Up {
-}
-
-\ Up {
-}
-
-\ Up - \ Down {
-}
-
-1 {
-alias=Down
-}
-
-2 {
-alias=Z
-}
-
-3 {
-special=||E
-e˜
-}
-
-3 Reversed {
-special=-||E
-}
-
-4 {
-eBi
-ei
-…$V
-…`
-…0
-…5x`
-…2E
-}
-
-5 {
-alias=S
-}
-
-6 {
-alias=G
-}
-
-7 {
-alias=Y
-}
-
-8 {
-2H˜B0
-$‰„ 
-2HB0
-$‰‡S
-2E˜B0
-$Y„ 
-2E˜E0
-2H˜B
-$‰„#
-!Y„#
-2˜B0
-!Y„S
-&„S
-5˜B0
-2HE0
-2H˜E0
-2u0
-$Y„S 
-2E˜E2
-$„S 
-2H˜E2
-2E˜E2
-2˜E2
-!Y„#!
-$Y‡S!
-$Y„#!
-$Y„S!
-!Y„S 
-!Y„S!
-$‰‡S!
-!Y‡S!
-!WS!
-˜u2
-˜E2
-$„S!
-$‡S!
-$‰„S!
-˜E2
-˜B
-˜B
-$‰‡S 
-˜B2
-2E˜u2
-!Y„# 
-!Y‡Q
-$Y‡S 
-u2
-!&‡S 
-!Y‡S 
-2˜E0
-!Y‡R
-2˜u2
-%˜E2
-%˜E2
-&‡S 
-5˜E2
-$‰„S 
-u2
-‡S!
-‰‡S!
-5˜u2
-&‡† 
-2˜E2
-2hB2
-5˜B2
-%u2
-%˜B2
-&„S 
-6„# 
-$u2
-„S 
-5˜E0
-!WS 
-!&„ 
-}
-
-9 {
-$Si
-2Bi
-2GSi
-2E6
-$&
-2i
-26
-$†6
-$u6
-}
-
-0 {
-alias=O
-}
-
-A {
-t&
-u6
-t%
-t&
-}
-
-B {
-B2‡
-B2˜p
-B2E˜p
-B5Hp
-B5˜p
-BRhp
-Be˜p
-Bhp
-Q#Y€
-q#$‡
-t!&T
-t!&‡
-t!Y€
-t!Y‡
-t#!&T
-t#!V‡
-t#!W
-t#!Y€
-t#!Y‡
-t#$V‡
-t#$Y€
-t#$Y‡
-t#$‡
-t#&W
-t#&‡
-t#TV‡
-t#TY€
-t#TY‡
-t#T‡
-t#V€
-t#V‡
-t#W
-t#Y€
-t#Y‡
-t$V‡
-t$Y€
-t$Y‡
-t$€
-t$‰‡
-t%˜p
-t&)‡
-t&TY€
-t&TY‡
-t&T‡
-t&Y€
-t&Y‡
-u5˜p
-„#!V€
-„#!V‡
-„#!Y€
-„#!Y‡
-„#$Y
-„#$Y€
-„#$Y‡
-„#$€
-„#&‡
-„#TY€
-„#Y€
-„#Y‡
-„&TY‡
-t&%˜p
-t&&‡
-t#Q&‡
-t#T‰‡
-t&T‰‡
-„&T‰‡
-t&W‡
-t&$‰‡
-t#$‰€
-}
-
-C {
-2H
-$‰
-2H
-5x
-}
-
-D {
-t&€
-t&W
-}
-
-E {
-2Eex
-25x
-2ex
-25x
-2ex
-2Ex
-!W‰
-$W‰
-2x
-!$‰
-5ex
-25x
-2x
-2H
-2Eex
-2ex
-5ex
-2Ehx
-$VW‰
-22H
-22H
-2E5x
-5ux
-bEx
-bex
-bx
-2GW†
-bHH
-bEx
-bEex
-2HW†
-bH•x
-bH
-5Ex
-2hx
-bH
-bx
-5Eex
-2Hx
-25x
-bex
-$‰‡
-bbH
-55x
-}
-
-F {
-alias=Left-Down
-}
-
-G {
-2He
-$†P
-$‰€
-2H˜p
-2He@
-$†T
-$†W
-2Hep
-2H•@
-2H•p
-}
-
-H {
-u
-†
-$u
-t&
-u6
-t
-}
-
-I {
-alias=Down
-}
-
-J {
-GS
-Hc
-}
-
-K {
-6„
-5t
-5t%
-5„%
-5u
-5t€
-5
-5E
-5H
-5i
-5t%€
-6„Y
-6„‰
-5t‰
-5t&
-5u€
-$t
-6t
-2AY
-%t
-5t‰
-}
-
-L {
-alias=Down-Right
-}
-
-M {
-special=-1E
-}
-
-N {
-t†0
-t–0
-AHc
-t†0
-BYc
-u–0
-}
-
-O {
-2Hb
-}
-
-P {
-t#T
-t&T
-„&T
-t#!
-„&!
-t#Q
-„#P
-t&!
-t&P
-„#Q
-t&Q
-t# 
-t#P
-t#$
-}
-
-Q {
-x–2€
-†!P
-†!X
-†!€
-†$‰
-$S$€
-$†!P
-$†!X
-$†!Y
-$†!€
-$†$p
-2Hb
-2Hb
-2Hb€
-2Hb
-2Hb
-2Hb
-2HbH
-2HbH
-2HbP
-2HbX
-2HbY
-2Hb`
-2Hb‰
-2Hb@
-†!Y
-2E2i
-$v!Y
-2GS!Y
-bHbH
-bHbY
-2Hbi
-}
-
-R {
-t#TY
-t$‰
-t&Y
-t#T€
-BeH
-t#Y
-„&T‰
-t$Y
-t&W€
-t#!Y
-„&TY
-t&(
-„&T€
-t#$Y
-„#Y
-t#$€
-t&T€
-BeE
-t&$€
-B5
-t#$P
-t&QH
-„#W‰
-Bex
-t#W‰
-t&$‰
-t&QY
-t&•H
-tx
-t&TY
-„#$‰
-}
-
-S {
-special=|3N
-2Hp
-2Ehp
-}
-
-T {
-alias=Right-Down
-}
-
-U {
-}
-
-V {
-alias=U
-}
-
-W {
-special=1E
-}
-
-X {
-special=-1K
-}
-
-Y {
-6€
-&
-&€
-5p
-6
-5p
-6
-5€
-#W
-%6‡
-}
-
-Z {
-special=3N
-hx
-}
-
-? {
-5€
-B5p
-Bh
-Bep
-B5€
-Q&€
-Q&W
-Q#W
-Q&‡
-Bi
-Q#X
-h
-ex
-ep
-!&W
-!&€
-}
-
-A Reversed {
-special=||A
-}
-
-C Reversed {
-special=-C
-}
-
-D Reversed {
-special=!D
-}
-
-E Reversed {
-special=-E
-}
-
-F Reversed {
-alias=Up-Right
-}
-
-G Reversed {
-special=!G
-}
-
-H Reversed {
-special=!H
-}
-
-I Reversed {
-alias=Up
-}
-
-J Reversed {
-special=!J
-}
-
-K Reversed {
-special=-K
-}
-
-L Reversed {
-alias=Left-Up
-}
-
-M Reversed {
-special=3E
-–%
-}
-
-N Reversed {
-special=-||N
-}
-
-O Reversed {
-special=||O
-}
-
-P Reversed {
-special=!P
-}
-
-S Reversed {
-special=|1N
-}
-
-T Reversed {
-alias=Up-Left
-}
-
-U Reversed {
-special=||U
-}
-
-V Reversed {
-alias=U Reversed
-}
-
-W Reversed {
-special=-3E
-}
-
-X Reversed {
-special=3K
-}
-
-Y Reversed {
-special=!Y
-}
-
-Z Reversed {
-special=1N
-}
-
-WHEEL_UP {
-}
-
-WHEEL_DOWN {
-}
-
-LBUTTON_DOWN {
-}
-
-LBUTTON_UP {
-}
-
-MBUTTON_DOWN {
-}
-
-MBUTTON_UP {
-}
-
-RBUTTON_DOWN {
-}
-
-RBUTTON_UP {
-}
-
-</GESTURE>
