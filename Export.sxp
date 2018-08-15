@@ -45,11 +45,11 @@ exclude=true
 }
 [→↓]窗口:下翻 {
    gesture = Right-Down
-   pagedown = keys, hotkey [NEXT]
+   pagedown = keys, hotkey  "[NEXT]"
 }
 [→←]窗口:右移 {
    gesture = Right-Left
-   pagedown = keys, hotkey [WIN_DOWN][RIGHT][WIN_UP]
+   pagedown = keys, hotkey  "[WIN_DOWN][RIGHT][WIN_UP]"
 }
 [↘] {
    gesture = \ Down
@@ -64,7 +64,7 @@ exclude=true
 }
 [↓↑]窗口:下移 {
    gesture = Down-Up
-   pagedown = keys, hotkey [WIN_DOWN][DOWN][WIN_UP]
+   pagedown = keys, hotkey  "[WIN_DOWN][DOWN][WIN_UP]"
 }
 [↓→]窗口:关闭 {
    gesture = Down-Right
@@ -91,7 +91,7 @@ exclude=true
 }
 [←↑]窗口:到顶 {
    gesture = Left-Up
-   HOME = keys, hotkey [CTRL_DOWN][HOME][CTRL_UP]
+   HOME = keys, hotkey  "[CTRL_DOWN][HOME][CTRL_UP]"
 }
 [←→]窗口:左移 {
    gesture = Left-Right
@@ -99,7 +99,7 @@ exclude=true
 }
 [←↓]窗口:到底 {
    gesture = Left-Down
-   END = keys, hotkey [CTRL_DOWN][END][CTRL_UP]
+   END = keys, hotkey  "[CTRL_DOWN][END][CTRL_UP]"
 }
 [↖] {
    gesture = \ Up
@@ -174,11 +174,11 @@ exec=notepad++.exe
 exec=pycharm64.exe
 [↑]窗口:向上 {
    gesture = Up
-   M- = keys, hotkey [CTRL_DOWN]B[CTRL_UP]
+   M- = keys, hotkey  "[CTRL_DOWN]b[CTRL_UP]"
 }
 [↓]标签:关闭 {
    gesture = Down
-   PRIOR = keys, hotkey [CTRL_DOWN][F4][CTRL_UP]
+   PRIOR = keys, hotkey  "[CTRL_DOWN][F4][CTRL_UP]"
 }
 </APP>
 
