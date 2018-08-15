@@ -91,7 +91,7 @@ exclude=true
 }
 [←↑]窗口:到顶 {
    gesture = Left-Up
-   HOME = keys, hotkey [HOME]
+   HOME = keys, hotkey [CTRL_DOWN][HOME][CTRL_UP]
 }
 [←→]窗口:左移 {
    gesture = Left-Right
@@ -99,7 +99,7 @@ exclude=true
 }
 [←↓]窗口:到底 {
    gesture = Left-Down
-   END = keys, hotkey [WIN_DOWN][DOWN][WIN_UP]
+   END = keys, hotkey [CTRL_DOWN][END][CTRL_UP]
 }
 [↖] {
    gesture = \ Up
@@ -148,7 +148,6 @@ exec=Code.exe
 
 <APP name="ide">
 exec=devenv.exe
-exec=pycharm64.exe
 [↑]窗口:向上 {
    gesture = Up
    M- = keys, hotkey [F12]
@@ -168,6 +167,18 @@ exec=notepad++.exe
 [←]历史:后退 {
    gesture = Left
    M- = keys, hotkey [CTRL_DOWN]-[CTRL_UP]
+}
+</APP>
+
+<APP name="pycharm">
+exec=pycharm64.exe
+[↑]窗口:向上 {
+   gesture = Up
+   M- = keys, hotkey [CTRL_DOWN]B[CTRL_UP]
+}
+[↓]标签:关闭 {
+   gesture = Down
+   PRIOR = keys, hotkey [CTRL_DOWN][F4][CTRL_UP]
 }
 </APP>
 
