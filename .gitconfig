@@ -52,7 +52,7 @@
 [core]
     editor = vim
     quotepath = false
-    autocrlf = true
+    autocrlf = false
     filemode = false
     compression = -1
     preloadindex = true
