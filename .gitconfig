@@ -66,3 +66,5 @@
     windowMemory =64m
     packSizeLimit =64m
     threads = 8
+[https]
+	proxy = https://127.0.0.1:44888
