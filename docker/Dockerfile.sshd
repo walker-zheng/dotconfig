@@ -6,39 +6,40 @@ ARG GROUPS
 ARG UID
 RUN echo "USER=$USER GROUPS=$GROUPS UID=$UID" \
     && echo 'deb http://mirrors.ustc.edu.cn/ubuntu xenial main\n \
-    deb-src  http://mirrors.ustc.edu.cn/ubuntu xenial main\n \
-    deb  http://mirrors.ustc.edu.cn/ubuntu xenial-updates main\n \
-    deb-src  http://mirrors.ustc.edu.cn/ubuntu xenial-updates main\n \
-    deb  http://mirrors.ustc.edu.cn/ubuntu xenial universe\n \
-    deb-src  http://mirrors.ustc.edu.cn/ubuntu xenial universe\n \
-    deb  http://mirrors.ustc.edu.cn/ubuntu xenial-updates universe\n \
-    deb-src  http://mirrors.ustc.edu.cn/ubuntu xenial-updates universe\n \
-    deb  http://mirrors.ustc.edu.cn/ubuntu xenial-security main\n \
-    deb-src  http://mirrors.ustc.edu.cn/ubuntu xenial-security main\n \
-    deb  http://mirrors.ustc.edu.cn/ubuntu xenial-security universe\n \
-    deb-src  http://mirrors.ustc.edu.cn/ubuntu xenial-security universe\n' > /etc/apt/sources.list \
+        deb-src  http://mirrors.ustc.edu.cn/ubuntu xenial main\n \
+        deb  http://mirrors.ustc.edu.cn/ubuntu xenial-updates main\n \
+        deb-src  http://mirrors.ustc.edu.cn/ubuntu xenial-updates main\n \
+        deb  http://mirrors.ustc.edu.cn/ubuntu xenial universe\n \
+        deb-src  http://mirrors.ustc.edu.cn/ubuntu xenial universe\n \
+        deb  http://mirrors.ustc.edu.cn/ubuntu xenial-updates universe\n \
+        deb-src  http://mirrors.ustc.edu.cn/ubuntu xenial-updates universe\n \
+        deb  http://mirrors.ustc.edu.cn/ubuntu xenial-security main\n \
+        deb-src  http://mirrors.ustc.edu.cn/ubuntu xenial-security main\n \
+        deb  http://mirrors.ustc.edu.cn/ubuntu xenial-security universe\n \
+        deb-src  http://mirrors.ustc.edu.cn/ubuntu xenial-security universe\n' > /etc/apt/sources.list \
     && echo "deb  http://mirrors.ustc.edu.cn/ros/ubuntu/ `cat /etc/lsb-release |grep DISTRIB_CODENAME=|sed 's/DISTRIB_CODENAME=//g'` main" > /etc/apt/sources.list.d/ros-latest.list \
     && apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654 \
     && apt-get update \
     && apt-get upgrade -y \
-    && apt-get install -y openssh-server sudo x11-apps locales software-properties-common language-pack-zh-hans \
+    && apt-get install -y apt-transport-https curl openssh-server sudo x11-apps locales software-properties-common language-pack-zh-hans \
     && update-locale LANG=zh_CN.UTF-8 \
     && add-apt-repository -y ppa:git-core/ppa \
+    && rm /etc/apt/apt.conf.d/docker-clean \
     && apt-get update \
-    && apt-get install -y axel bash-completion cmake doxygen g++ gcc git git-completion graphviz htop iputils-ping libssl-dev linux-tools-generic locate lsof make man net-tools nginx openssh-server php php-curl python python3 python3-pip python3-venv python-pip rsync sdcv stress supervisor sysstat telnet tmux unzip valgrind vim zip \
+    && apt-get install -y axel bash-completion clang-format cmake docker docker.io docker-compose doxygen g++ gcc git git-completion graphviz htop iputils-ping libssl-dev libxkbcommon-x11-0 linux-tools-generic locate lsof make man net-tools nginx openssh-server php php-curl python python3 python3-pip python3-venv python-pip rsync sdcv stress supervisor sysstat telnet tmux unzip valgrind vim zip \
     && apt-get install -y gradle \
     # && apt-get install -y ros-kinetic-desktop-full \
     && rm /etc/nginx/sites-enabled/default \
     && echo 'server {\n \
-    listen 80 default_server;\n \
-    listen [::]:80 default_server;\n \
-    root /var/www/html;\n \
-    index index.html index.htm index.nginx-debian.html;\n \
-    server_name _;\n \
-    location / {\n \
-    root /home/meiyang.zheng/workspace/doc/;\n \
-    autoindex on;\n \
-    }\n \
+        listen 80 default_server;\n \
+        listen [::]:80 default_server;\n \
+        root /var/www/html;\n \
+        index index.html index.htm index.nginx-debian.html;\n \
+        server_name _;\n \
+        location / {\n \
+            root /home/$USER/workspace/doc/;\n \
+            autoindex on;\n \
+        }\n \
     }\n' > /etc/nginx/conf.d/ai.conf \
     # && (mkdir -p /var/tmp/ && cd /var/tmp/ && wget https://cmake.org/files/v3.20/cmake-3.20.1.tar.gz && tar -xzvf cmake-3.20.1.tar.gz > /dev/null && cd cmake-3.20.1 && ./bootstrap && make -j4 && make install) \
     && groupadd -g $GROUPS -o $USER \
@@ -58,3 +59,4 @@ RUN echo "USER=$USER GROUPS=$GROUPS UID=$UID" \
 EXPOSE 22
 
 CMD    ["/usr/sbin/sshd", "-D"]
+
